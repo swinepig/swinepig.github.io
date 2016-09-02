@@ -920,9 +920,11 @@ figure.highlight,
     width: 100%; }
     figure.highlight .code pre,
     .codeblock .code pre {
-      max-width: 700px;
+      max-width: 900px;
       overflow-x: auto;
-      overflow-y: hidden; }
+      overflow-y: hidden;
+      word-wrap: break-word;
+      word-break: break-all; }
   figure.highlight .line,
   .codeblock .line {
     height: 1.3em;
