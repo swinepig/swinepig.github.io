@@ -378,12 +378,13 @@ blockquote, .stressed {
   -moz-box-sizing: border-box;
   box-sizing: border-box;
   margin: 2.5em 0;
-  padding: 0 0 0 50px;
+  padding: 10px 10px 10px 50px;
   color: #555;
-  border-left: none; }
+  border-left: none;
+  background-color: #EAEAEA; }
 
 blockquote:before, .stressed-quote:before {
-  content: "\201C";
+  /*content: "\201C";*/
   display: block;
   font-family: times;
   font-style: normal;
