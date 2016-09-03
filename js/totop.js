@@ -1,3 +1,4 @@
+(function(){
 $(window).scroll(function() {
     $(window).scrollTop() > 500 ? $("#rocket").addClass("show") : $("#rocket").removeClass("show");
 });
@@ -10,3 +11,4 @@ $("#rocket").click(function() {
     });
     return false;
 });
+})(jQuery);
