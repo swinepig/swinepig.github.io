@@ -863,12 +863,14 @@ pre {
 /* syntax highlight*/
 figure.highlight,
 .codeblock {
-  background: #f7f8f8;
+  background: #FFFFFF;
   margin: 10px 0;
   line-height: 1.1em;
   color: #333;
   padding-top: 15px;
-  overflow: hidden; }
+  overflow: hidden;
+  border: 1px solid #d8d8d8;
+  box-shadow: rgba(142, 142, 142, 0.08) 0 0 5px; }
   figure.highlight table,
   .codeblock table {
     display: block;
@@ -908,7 +910,7 @@ figure.highlight,
       color: #01579f; }
   figure.highlight .gutter,
   .codeblock .gutter {
-    background: #f7f8f8;
+    background: #FFFFFF;
     border-right: 1px solid #e6e6e6;
     padding: 0.3em 15px; }
     figure.highlight .gutter .line,
