@@ -1,4 +1,73 @@
-<!DOCTYPE html><html lang="zh-CN"><head><meta http-equiv="content-type" content="text/html; charset=utf-8"><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"><meta content="yes" name="apple-mobile-web-app-capable"><meta content="black-translucent" name="apple-mobile-web-app-status-bar-style"><meta content="telephone=no" name="format-detection"><meta name="description"><meta name="google-site-verification" content="6GTeiOhqimfTtuUIQtS8CqdXJzM4lPPMeXjbvNAsm5w"><title>记一次数据迁移的经历 | Swinepig</title><link rel="stylesheet" type="text/css" href="/css/normalize.min.css?v=0.0.0"><link rel="stylesheet" type="text/css" href="/css/pure-min.css?v=0.0.0"><link rel="stylesheet" type="text/css" href="/css/grids-responsive-min.css?v=0.0.0"><link rel="stylesheet" type="text/css" href="/css/style.css?v=0.0.0"><link rel="stylesheet" href="https://cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css"><script type="text/javascript" src="/js/jquery.min.js?v=0.0.0"></script><link rel="Shortcut Icon" type="image/x-icon" href="/favicon.ico"><link rel="apple-touch-icon" href="/apple-touch-icon.png"><link rel="apple-touch-icon-precomposed" href="/apple-touch-icon.png"><link rel="alternate" type="application/atom+xml" href="/atom.xml"></head><body><div class="body_container"><div id="header"><div class="site-name"><h1 class="hidden">记一次数据迁移的经历</h1><a id="logo" href="/.">Swinepig</a><p class="description">情流感的博格</p></div><div id="nav-menu"><a href="/." class="current"><i class="fa fa-home"> 首页</i></a><a href="/archives/"><i class="fa fa-archive"> 归档</i></a><a href="/about/"><i class="fa fa-user"> 关于</i></a><a href="/atom.xml"><i class="fa fa-rss"> 订阅</i></a></div></div><div id="layout" class="pure-g"><div class="pure-u-1 pure-u-md-3-4 single_page"><div class="content_container"><div class="post"><h1 class="post-title">记一次数据迁移的经历</h1><div class="post-meta">Aug 28, 2016<span> | </span><span class="category"><a href="/categories/database/">database</a></span><script src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js" async></script><span id="busuanzi_container_page_pv"> | <span id="busuanzi_value_page_pv"></span><span> Hits</span></span></div><div class="clear"><div id="toc" class="toc-article"><div class="toc-title">文章目录</div><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#具体详细步骤"><span class="toc-number">1.</span> <span class="toc-text">具体详细步骤</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#源数据源数据导出"><span class="toc-number">1.1.</span> <span class="toc-text">源数据源数据导出</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#源数据库表结构等导出"><span class="toc-number">1.2.</span> <span class="toc-text">源数据库表结构等导出</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#重建数据库"><span class="toc-number">1.3.</span> <span class="toc-text">重建数据库</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#本地数据结构恢复"><span class="toc-number">1.4.</span> <span class="toc-text">本地数据结构恢复</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#本地数据恢复"><span class="toc-number">1.5.</span> <span class="toc-text">本地数据恢复</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#碰到的问题"><span class="toc-number">2.</span> <span class="toc-text">碰到的问题</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#问题一"><span class="toc-number">2.1.</span> <span class="toc-text">问题一</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#问题二"><span class="toc-number">2.2.</span> <span class="toc-text">问题二</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#问题三"><span class="toc-number">2.3.</span> <span class="toc-text">问题三</span></a></li></ol></li></ol></div></div><div class="post-content"><p>前段时间公司要求我们项目版本做一次回收，因需要回公司做演示还需要将服务器数据考回到本地–这步比较棘手因为客户方开发环境U盘无法使用=。=，最后好不容易找了个借口<br>向别人搞了个内部U盘。</p>
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>Swinepig</title>
+  <subtitle>情流感的博格</subtitle>
+  <link href="/atom.xml" rel="self"/>
+  
+  <link href="https://swinepig.github.io/"/>
+  <updated>2016-09-02T06:34:54.940Z</updated>
+  <id>https://swinepig.github.io/</id>
+  
+  <author>
+    <name>xin zhu</name>
+    
+  </author>
+  
+  <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Hello World</title>
+    <link href="https://swinepig.github.io/2016/09/02/hello-world/"/>
+    <id>https://swinepig.github.io/2016/09/02/hello-world/</id>
+    <published>2016-09-02T06:34:54.948Z</published>
+    <updated>2016-09-02T06:34:54.940Z</updated>
+    
+    <content type="html"><![CDATA[<p>Welcome to <a href="https://hexo.io/" target="_blank" rel="external">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="external">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="external">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="external">GitHub</a>.</p>
+<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo new <span class="string">"My New Post"</span></div></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="external">Writing</a></p>
+<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo server</div></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="external">Server</a></p>
+<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo generate</div></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="external">Generating</a></p>
+<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo deploy</div></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="external">Deployment</a></p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;Welcome to &lt;a href=&quot;https://hexo.io/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Hexo&lt;/a&gt;! This is your very first post. Check &lt;a href=&quot;https://hexo.
+    
+    </summary>
+    
+      <category term="测试" scheme="https://swinepig.github.io/categories/%E6%B5%8B%E8%AF%95/"/>
+    
+    
+      <category term="测试" scheme="https://swinepig.github.io/tags/%E6%B5%8B%E8%AF%95/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>My New Post</title>
+    <link href="https://swinepig.github.io/2016/09/02/My-New-Post/"/>
+    <id>https://swinepig.github.io/2016/09/02/My-New-Post/</id>
+    <published>2016-09-02T01:54:02.000Z</published>
+    <updated>2016-09-02T06:51:25.045Z</updated>
+    
+    <summary type="html">
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>记一次数据迁移的经历</title>
+    <link href="https://swinepig.github.io/2016/08/28/db2datatransfer/"/>
+    <id>https://swinepig.github.io/2016/08/28/db2datatransfer/</id>
+    <published>2016-08-28T08:08:34.000Z</published>
+    <updated>2016-09-02T09:22:18.363Z</updated>
+    
+    <content type="html"><![CDATA[<p>前段时间公司要求我们项目版本做一次回收，因需要回公司做演示还需要将服务器数据考回到本地–这步比较棘手因为客户方开发环境U盘无法使用=。=，最后好不容易找了个借口<br>向别人搞了个内部U盘。</p>
 <p>我们开发环境为AIX+DB2，因为只需做演示使用数据导出觉定不采用 <code>db2move</code> 命令，只选取全部基础表+少量业务表做数据导出(使用 <code>export</code> 命令)</p>
 <p>总的来说按照以下步骤进行：</p>
 <ul>
@@ -29,4 +98,20 @@
 <h3 id="问题三"><a href="#问题三" class="headerlink" title="问题三"></a>问题三</h3><p>现象：应用在本地出现未知错误</p>
 <p>原因：查看日志发现存在很多java.lang.OutOfMemoryError: PermGen space，内存溢出。使用jvisualvm发现持久代MaxPermSize值只有128MB</p>
 <p>解决方案：%DOMAIN_HOME%/bin/setDomainEnv.cmd（Linux 为 setDomainEnv.sh）-Xms1024m -Xmx1024m -XX:PermSize=48m -XX:MaxPermSize=256m </p>
-</div><script type="text/javascript" src="/js/share.js?v=0.0.0" async></script><a data-url="https://swinepig.github.io/2016/08/28/db2datatransfer/" data-id="cismxpttj00028nshlb4p887o" class="article-share-link">分享到</a><div class="tags"><a href="/tags/db2/">db2</a></div><div class="post-nav"><a href="/2016/09/02/My-New-Post/" class="pre">My New Post</a></div></div></div></div><div class="pure-u-1 pure-u-md-3-4"><div id="footer">© <a href="/." rel="nofollow">Swinepig.</a> Powered by<a rel="nofollow" target="_blank" href="https://hexo.io"> Hexo.</a><a rel="nofollow" target="_blank" href="http://www.miitbeian.gov.cn/"> 浙ICP备16030196号</a></div></div></div><a id="rocket" href="#top" class="show"></a><script type="text/javascript" src="/js/totop.js?v=0.0.0" async></script><script type="text/javascript" src="//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.pack.js" async></script><script type="text/javascript" src="/js/fancybox.js?v=0.0.0" async></script><link rel="stylesheet" type="text/css" href="/css/jquery.fancybox.css?v=0.0.0"><script type="text/javascript" src="/js/codeblock-resizer.js?v=0.0.0"></script><script type="text/javascript" src="/js/smartresize.js?v=0.0.0"></script></div></body></html>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;前段时间公司要求我们项目版本做一次回收，因需要回公司做演示还需要将服务器数据考回到本地–这步比较棘手因为客户方开发环境U盘无法使用=。=，最后好不容易找了个借口&lt;br&gt;向别人搞了个内部U盘。&lt;/p&gt;
+&lt;p&gt;我们开发环境为AIX+DB2，因为只需做演示使用数据导出觉定不采用 
+    
+    </summary>
+    
+      <category term="database" scheme="https://swinepig.github.io/categories/database/"/>
+    
+    
+      <category term="db2" scheme="https://swinepig.github.io/tags/db2/"/>
+    
+  </entry>
+  
+</feed>
