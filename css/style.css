@@ -1546,4 +1546,8 @@ em.search-keyword {
 .about_item_hover {
   background-color: #21b384;
   color: white;
-  text-decoration: none; }
+  text-decoration: none;
+  font-seze: 20px;
+  padding: 10px;
+  width: 60%;
+  border-radius: 4px; }

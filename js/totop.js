@@ -11,9 +11,11 @@ $("#rocket").click(function() {
     });
     return false;
 });
-  $("#Nickname-swinepig").hover(function(){
-    $("this").addClass("about_item_hover");
+
+  $("#Nickname-swinepig,#Email-409989258-qq-com").hover(function(){
+    $(this).addClass("about_item_hover");
     },function(){
-    $("this").removeClass("about_item_hover");
+    $(this).removeClass("about_item_hover");
   });
+
 })(jQuery);
