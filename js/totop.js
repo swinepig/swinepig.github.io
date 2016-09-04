@@ -12,7 +12,12 @@ $("#rocket").click(function() {
     return false;
 });
 
-  $("#Nickname-swinepig,#Email-409989258-qq-com").hover(function(){
+ $("#Nickname-swinepig").hover(function(){
+    $(this).addClass("about_item_hover");
+    },function(){
+    $(this).removeClass("about_item_hover");
+  });
+  $("#Nickname-swinepig").siblings().hover(function(){
     $(this).addClass("about_item_hover");
     },function(){
     $(this).removeClass("about_item_hover");
