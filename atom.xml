@@ -77,7 +77,7 @@
     <link href="https://swinepig.github.io/2016/08/08/SpringResponseRequest/"/>
     <id>https://swinepig.github.io/2016/08/08/SpringResponseRequest/</id>
     <published>2016-08-08T13:43:33.000Z</published>
-    <updated>2016-09-03T13:49:09.643Z</updated>
+    <updated>2016-09-04T02:39:12.743Z</updated>
     
     <content type="html"><![CDATA[<p>本文对SpringMVC两个注解@Response@Request做一些简单记录</p>
 <h3 id="spring-mcv消息转化机制"><a href="#spring-mcv消息转化机制" class="headerlink" title="spring mcv消息转化机制"></a>spring mcv消息转化机制</h3><p>SpringMVC中使用@RequestBody,@ResponseBody注解实现Java对象和XML/JSON数据自动转换，Spring是怎么实现这个转换的呢？我们先了解下Spring的消息转换机制。</p>
@@ -95,7 +95,7 @@
 </li>
 </ul>
 <p>返回json格式我们只要把Jackson2或者GSON加入工程的class path，Spring就会自动把GsonHttpMessageConverter加进来。</p>
-<h3 id="RequestBody篇"><a href="#RequestBody篇" class="headerlink" title="RequestBody篇"></a>RequestBody篇</h3><p>作用： </p>
+<h3 id="RequestBody篇"><a href="#RequestBody篇" class="headerlink" title="@RequestBody篇"></a>@RequestBody篇</h3><p>作用： </p>
 <ul>
 <li>该注解用于读取Request请求的body部分数据，使用系统默认配置的HttpMessageConverter进行解析，然后把相应的数据绑定到要返回的对像上</li>
 <li>再把HttpMessageConverter返回的对象数据绑定到 controller中方法的参数上。</li>
