@@ -1542,3 +1542,8 @@ em.search-keyword {
   font-weight: bold;
   font-style: normal;
   color: #01579f; }
+
+.about_item_hover {
+  background-color: #21b384;
+  color: white;
+  text-decoration: none; }
