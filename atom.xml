@@ -207,6 +207,157 @@
   </entry>
   
   <entry>
+    <title>Http报头Accept与Content-Type的区别</title>
+    <link href="https://swinepig.github.io/2016/06/04/http/"/>
+    <id>https://swinepig.github.io/2016/06/04/http/</id>
+    <published>2016-06-04T05:44:37.000Z</published>
+    <updated>2016-09-04T05:46:08.254Z</updated>
+    
+    <content type="html"><![CDATA[<p>Accept属于请求头， Content-Type属于实体头。<br>Http报头分为通用报头，请求报头，响应报头和实体报头。<br>请求方的http报头结构：通用报头|请求报头|实体报头<br>响应方的http报头结构：通用报头|响应报头|实体报头</p>
+<p>Accept代表发送端（客户端）希望接受的数据类型。<br>比如：Accept：text/xml;<br>代表客户端希望接受的数据类型是xml类型</p>
+<p>Content-Type代表发送端（客户端|服务器）发送的实体数据的数据类型。<br>比如：Content-Type：text/html;<br>代表发送端发送的数据格式是html。</p>
+<p>二者合起来，<br>Accept:text/xml；<br>Content-Type:text/html<br>即代表希望接受的数据类型是xml格式，本次请求发送的数据的数据格式是html。</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;Accept属于请求头， Content-Type属于实体头。&lt;br&gt;Http报头分为通用报头，请求报头，响应报头和实体报头。&lt;br&gt;请求方的http报头结构：通用报头|请求报头|实体报头&lt;br&gt;响应方的http报头结构：通用报头|响应报头|实体报头&lt;/p&gt;
+&lt;p&gt;Acce
+    
+    </summary>
+    
+    
+      <category term="HTTP" scheme="https://swinepig.github.io/tags/HTTP/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>nginx配置location总结及rewrite规则写法</title>
+    <link href="https://swinepig.github.io/2016/05/09/nginx-config/"/>
+    <id>https://swinepig.github.io/2016/05/09/nginx-config/</id>
+    <published>2016-05-09T05:47:10.000Z</published>
+    <updated>2016-09-04T05:57:54.742Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="nginx配置简单记录"><a href="#nginx配置简单记录" class="headerlink" title="nginx配置简单记录"></a>nginx配置简单记录</h2><h4 id="location正则写法"><a href="#location正则写法" class="headerlink" title="location正则写法"></a>location正则写法</h4><figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div></pre></td><td class="code"><pre><div class="line">location  = / &#123;</div><div class="line">  # 精确匹配 / ，主机名后面不能带任何字符串</div><div class="line">  [ configuration A ] </div><div class="line">&#125;</div><div class="line"></div><div class="line">location  / &#123;</div><div class="line">  # 因为所有的地址都以 / 开头，所以这条规则将匹配到所有请求</div><div class="line">  # 但是正则和最长字符串会优先匹配</div><div class="line">  [ configuration B ] </div><div class="line">&#125;</div><div class="line"></div><div class="line">location /documents/ &#123;</div><div class="line">  # 匹配任何以 /documents/ 开头的地址，匹配符合以后，还要继续往下搜索</div><div class="line">  # 只有后面的正则表达式没有匹配到时，这一条才会采用这一条</div><div class="line">  [ configuration C ] </div><div class="line">&#125;</div><div class="line"></div><div class="line">location ~ /documents/Abc &#123;</div><div class="line">  # 匹配任何以 /documents/ 开头的地址，匹配符合以后，还要继续往下搜索</div><div class="line">  # 只有后面的正则表达式没有匹配到时，这一条才会采用这一条</div><div class="line">  [ configuration CC ] </div><div class="line">&#125;</div><div class="line"></div><div class="line">location ^~ /images/ &#123;</div><div class="line">  # 匹配任何以 /images/ 开头的地址，匹配符合以后，停止往下搜索正则，采用这一条。</div><div class="line">  [ configuration D ] </div><div class="line">&#125;</div><div class="line"></div><div class="line">location ~* \.(gif|jpg|jpeg)$ &#123;</div><div class="line">  # 匹配所有以 gif,jpg或jpeg 结尾的请求</div><div class="line">  # 然而，所有请求 /images/ 下的图片会被 config D 处理，因为 ^~ 到达不了这一条正则</div><div class="line">  [ configuration E ] </div><div class="line">&#125;</div><div class="line"></div><div class="line">location /images/ &#123;</div><div class="line">  # 字符匹配到 /images/，继续往下，会发现 ^~ 存在</div><div class="line">  [ configuration F ] </div><div class="line">&#125;</div><div class="line"></div><div class="line">location /images/abc &#123;</div><div class="line">  # 最长字符匹配到 /images/abc，继续往下，会发现 ^~ 存在</div><div class="line">  # F与G的放置顺序是没有关系的</div><div class="line">  [ configuration G ] </div><div class="line">&#125;</div><div class="line"></div><div class="line">location ~ /images/abc/ &#123;</div><div class="line">  # 只有去掉 config D 才有效：先最长匹配 config G 开头的地址，继续往下搜索，匹配到这一条正则，采用</div><div class="line">    [ configuration H ] </div><div class="line">&#125;</div><div class="line"></div><div class="line">location ~* /js/.*/\.js</div></pre></td></tr></table></figure>
+<ul>
+<li>已=开头表示精确匹配<br>如 A 中只匹配根目录结尾的请求，后面不能带任何字符串。Exception handling - <exception> elements for exceptions that do not have</exception></li>
+<li>^~ 开头表示uri以某个常规字符串开头，不是正则匹配</li>
+<li>~ 开头表示区分大小写的正则匹配</li>
+<li>~* 开头表示不区分大小写的正则匹配</li>
+<li>/ 通用匹配, 如果没有其它匹配,任何请求都会匹配到</li>
+</ul>
+<p>顺序 no优先级：<br>(location =) &gt; (location 完整路径) &gt; (location ^~ 路径) &gt; (location ~,~* 正则顺序) &gt; (location 部分起始路径) &gt; (/)</p>
+<p>上面的匹配结果<br>按照上面的location写法，以下的匹配示例成立：  </p>
+<ul>
+<li>/ -&gt; config A<br>精确完全匹配，即使/index.html也匹配不了</li>
+<li>/downloads/download.html -&gt; config B<br>匹配B以后，往下没有任何匹配，采用B</li>
+<li>/images/1.gif -&gt; configuration D<br>匹配到F，往下匹配到D，停止往下</li>
+<li>/images/abc/def -&gt; config D<br>最长匹配到G，往下匹配D，停止往下<br>你可以看到 任何以/images/开头的都会匹配到D并停止，FG写在这里是没有任何意义的，H是永远轮不到的，这里只是为了说明匹配顺序</li>
+<li>/documents/document.html -&gt; config C<br>匹配到C，往下没有任何匹配，采用C</li>
+<li>/documents/1.jpg -&gt; configuration E<br>匹配到C，往下正则匹配到E</li>
+<li>/documents/Abc.jpg -&gt; config CC<br>最长匹配到C，往下正则顺序匹配到CC，不会往下到E        </li>
+</ul>
+<h3 id="实际使用建议"><a href="#实际使用建议" class="headerlink" title="实际使用建议"></a>实际使用建议</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line">所以实际使用中，个人觉得至少有三个匹配规则定义，如下：</div><div class="line">#直接匹配网站根，通过域名访问网站首页比较频繁，使用这个会加速处理，官网如是说。</div><div class="line">#这里是直接转发给后端应用服务器了，也可以是一个静态首页</div><div class="line"># 第一个必选规则</div><div class="line">location = / &#123;</div><div class="line">    proxy_pass http://tomcat:8080/index</div><div class="line">&#125;</div><div class="line"># 第二个必选规则是处理静态文件请求，这是nginx作为http服务器的强项</div><div class="line"># 有两种配置模式，目录匹配或后缀匹配,任选其一或搭配使用</div><div class="line">location ^~ /static/ &#123;</div><div class="line">    root /webroot/static/;</div><div class="line">&#125;</div><div class="line">location ~* \.(gif|jpg|jpeg|png|css|js|ico)$ &#123;</div><div class="line">    root /webroot/res/;</div><div class="line">&#125;</div><div class="line">#第三个规则就是通用规则，用来转发动态请求到后端应用服务器</div><div class="line">#非静态文件请求就默认是动态请求，自己根据实际把握</div><div class="line">#毕竟目前的一些框架的流行，带.php,.jsp后缀的情况很少了</div><div class="line">location / &#123;</div><div class="line">    proxy_pass http://tomcat:8080/</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="Rewrite规则"><a href="#Rewrite规则" class="headerlink" title="Rewrite规则"></a>Rewrite规则</h3><p>rewrite功能就是，使用nginx提供的全局变量或自己设置的变量，结合正则表达式和标志位实现url重写以及重定向。rewrite只能放在server{},location{},if{}中，并且只能对域名后边的除去传递的参数外的字符串起作用，例如 <code>http://seanlook.com/a/we/index.php?id=1&amp;u=str</code> 只对/a/we/index.php重写。语法 <code>rewrite regex replacement [flag]</code> ;</p>
+<p>如果相对域名或参数字符串起作用，可以使用全局变量匹配，也可以使用proxy_pass反向代理。</p>
+<p>表明看rewrite和location功能有点像，都能实现跳转，主要区别在于rewrite是在同一域名内更改获取资源的路径，而location是对一类路径做控制访问或反向代理，可以proxy_pass到其他机器。很多情况下rewrite也会写在location里，它们的执行顺序是：</p>
+<ol>
+<li>执行server块的rewrite指令</li>
+<li>执行location匹配</li>
+<li>执行选定的location中的rewrite指令</li>
+</ol>
+<p>如果其中某步URI被重写，则重新循环执行1-3，直到找到真实存在的文件；循环超过10次，则返回500 Internal Server Error错误。</p>
+<h3 id="flag标志位"><a href="#flag标志位" class="headerlink" title="flag标志位"></a>flag标志位</h3><ul>
+<li><code>last</code> : 相当于Apache的[L]标记，表示完成rewrite</li>
+<li><code>break</code> : 停止执行当前虚拟主机的后续rewrite指令集</li>
+<li><code>redirect</code> : 返回302临时重定向，地址栏会显示跳转后的地址</li>
+<li><code>permanent</code> : 返回301永久重定向，地址栏会显示跳转后的地址</li>
+</ul>
+<p>因为301和302不能简单的只返回状态码，还必须有重定向的URL，这就是return指令无法返回301,302的原因了。这里 last 和 break 区别有点难以理解：</p>
+<ol>
+<li>last一般写在server和if中，而break一般使用在location中</li>
+<li>last不终止重写后的url匹配，即新的url会再从server走一遍匹配流程，而break终止重写后的匹配</li>
+<li>break和last都能组织继续执行后面的rewrite指令</li>
+</ol>
+<h3 id="if指令与全局变量"><a href="#if指令与全局变量" class="headerlink" title="if指令与全局变量"></a>if指令与全局变量</h3><p>if判断指令</p>
+<p>语法为 <code>if(condition){...}</code> ，对给定的条件condition进行判断。如果为真，大括号内的rewrite指令将被执行，if条件(conditon)可以是如下任何内容：</p>
+<ul>
+<li>当表达式只是一个变量时，如果值为空或任何以0开头的字符串都会当做false</li>
+<li>直接比较变量和内容时，使用=或!=</li>
+<li>~正则表达式匹配，~*不区分大小写的匹配，!~区分大小写的不匹配</li>
+</ul>
+<p>-f和!-f用来判断是否存在文件</p>
+<p>-d和!-d用来判断是否存在目录</p>
+<p>-e和!-e用来判断是否存在文件或目录</p>
+<p>-x和!-x用来判断文件是否可执行</p>
+<p>例如：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div></pre></td><td class="code"><pre><div class="line">if ($http_user_agent ~ MSIE) &#123;</div><div class="line">    rewrite ^(.*)$ /msie/$1 break;</div><div class="line">&#125; //如果UA包含&quot;MSIE&quot;，rewrite请求到/msid/目录下</div><div class="line"></div><div class="line">if ($http_cookie ~* &quot;id=([^;]+)(?:;|$)&quot;) &#123;</div><div class="line">    set $id $1;</div><div class="line"> &#125; //如果cookie匹配正则，设置变量$id等于正则引用部分</div><div class="line"></div><div class="line">if ($request_method = POST) &#123;</div><div class="line">    return 405;</div><div class="line">&#125; //如果提交方法为POST，则返回状态405（Method not allowed）。return不能返回301,302</div><div class="line"></div><div class="line">if ($slow) &#123;</div><div class="line">    limit_rate 10k;</div><div class="line">&#125; //限速，$slow可以通过 set 指令设置</div><div class="line"></div><div class="line">if (!-f $request_filename)&#123;</div><div class="line">    break;</div><div class="line">    proxy_pass  http://127.0.0.1; </div><div class="line">&#125; //如果请求的文件名不存在，则反向代理到localhost 。这里的break也是停止rewrite检查</div><div class="line"></div><div class="line">if ($args ~ post=140)&#123;</div><div class="line">    rewrite ^ http://example.com/ permanent;</div><div class="line">&#125; //如果query string中包含&quot;post=140&quot;，永久重定向到example.com</div><div class="line"></div><div class="line">location ~* \.(gif|jpg|png|swf|flv)$ &#123;</div><div class="line">    valid_referers none blocked www.jefflei.com www.leizhenfang.com;</div><div class="line">    if ($invalid_referer) &#123;</div><div class="line">        return 404;</div><div class="line">    &#125; //防盗链</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>全局变量</p>
+<p>下面是可以用作if判断的全局变量</p>
+<ul>
+<li>$args ： #这个变量等于请求行中的参数，同$query_string</li>
+<li>$content_length ： 请求头中的Content-length字段。</li>
+<li>$content_type ： 请求头中的Content-Type字段。</li>
+<li>$document_root ： 当前请求在root指令中指定的值。</li>
+<li>$host ： 请求主机头字段，否则为服务器名称。</li>
+<li>$http_user_agent ： 客户端agent信息</li>
+<li>$http_cookie ： 客户端cookie信息</li>
+<li>$limit_rate ： 这个变量可以限制连接速率。</li>
+<li>$request_method ： 客户端请求的动作，通常为GET或POST。</li>
+<li>$remote_addr ： 客户端的IP地址。</li>
+<li>$remote_port ： 客户端的端口。</li>
+<li>$remote_user ： 已经经过Auth Basic Module验证的用户名。</li>
+<li>$request_filename ： 当前请求的文件路径，由root或alias指令与URI请求生成。</li>
+<li>$scheme ： HTTP方法（如http，https）。</li>
+<li>$server_protocol ： 请求使用的协议，通常是HTTP/1.0或HTTP/1.1。</li>
+<li>$server_addr ： 服务器地址，在完成一次系统调用后可以确定这个值。</li>
+<li>$server_name ： 服务器名称。</li>
+<li>$server_port ： 请求到达服务器的端口号。</li>
+<li>$request_uri ： 包含请求参数的原始URI，不包含主机名，如：”/foo/bar.php?arg=baz”。</li>
+<li>$uri ： 不带请求参数的当前URI，$uri不包含主机名，如”/foo/bar.html”。</li>
+<li>$document_uri ： 与$uri相同。</li>
+</ul>
+<p>例：<code>http://localhost:88/test1/test2/test.php</code></p>
+<p>$host：localhost</p>
+<p>$server_port：88</p>
+<p>$request_uri：<code>http://localhost:88/test1/test2/test.php</code></p>
+<p>$document_uri：/test1/test2/test.php</p>
+<p>$document_root：/var/www/html</p>
+<p>$request_filename：/var/www/html/test1/test2/test.php</p>
+<h3 id="常用正则"><a href="#常用正则" class="headerlink" title="常用正则"></a>常用正则</h3><ul>
+<li><code>.</code> ： 匹配除换行符以外的任意字符</li>
+<li><code>?</code> ： 重复0次或1次</li>
+<li><code>+</code> ： 重复1次或更多次</li>
+<li><code>*</code> ： 重复0次或更多次</li>
+<li><code>\d</code> ：匹配数字</li>
+<li><code>^</code> ： 匹配字符串的开始</li>
+<li><code>$</code> ： 匹配字符串的介绍</li>
+<li><code>{n}</code> ： 重复n次</li>
+<li><code>{n,}</code> ： 重复n次或更多次</li>
+<li><code>[c]</code> ： 匹配单个字符c</li>
+<li><code>[a-z]</code> ： 匹配a-z小写字母的任意一个</li>
+</ul>
+<p>小括号()之间匹配的内容，可以在后面通过$1来引用，$2表示的是前面第二个()里的内容。正则里面容易让人困惑的是\转义特殊字符。</p>
+<h3 id="rewrite实例"><a href="#rewrite实例" class="headerlink" title="rewrite实例"></a>rewrite实例</h3><p>例1：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div></pre></td><td class="code"><pre><div class="line">http &#123;</div><div class="line"> # 定义image日志格式</div><div class="line"> log_format imagelog &apos;[$time_local] &apos; $image_file &apos; &apos; $image_type &apos; &apos; $body_bytes_sent &apos; &apos; $status;</div><div class="line"> # 开启重写日志</div><div class="line"> rewrite_log on;</div><div class="line"></div><div class="line"> server &#123;</div><div class="line">     root /home/www;</div><div class="line"></div><div class="line">     location / &#123;</div><div class="line">             # 重写规则信息</div><div class="line">             error_log logs/rewrite.log notice; </div><div class="line">             # 注意这里要用‘’单引号引起来，避免&#123;&#125;</div><div class="line">             rewrite &apos;^/images/([a-z]&#123;2&#125;)/([a-z0-9]&#123;5&#125;)/(.*)\.(png|jpg|gif)$&apos; /data?file=$3.$4;</div><div class="line">             # 注意不能在上面这条规则后面加上“last”参数，否则下面的set指令不会执行</div><div class="line">             set $image_file $3;</div><div class="line">             set $image_type $4;</div><div class="line">     &#125;</div><div class="line"></div><div class="line">     location /data &#123;</div><div class="line">             # 指定针对图片的日志格式，来分析图片类型和大小</div><div class="line">             access_log logs/images.log mian;</div><div class="line">             root /data/images;</div><div class="line">             # 应用前面定义的变量。判断首先文件在不在，不在再判断目录在不在，如果还不在就跳转到最后一个url里</div><div class="line">             try_files /$arg_file /image404.html;</div><div class="line">     &#125;</div><div class="line">     location = /image404.html &#123;</div><div class="line">             # 图片不存在返回特定的信息</div><div class="line">             return 404 &quot;image not found\n&quot;;</div><div class="line">     &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>对形如/images/ef/uh7b3/test.png的请求，重写到/data?file=test.png，于是匹配到location /data，先看/data/images/test.png文件存不存在，如果存在则正常响应，如果不存在则重写tryfiles到新的image404 location，直接返回404状态码。</p>
+<p>例2：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">rewrite ^/images/(.*)_(\d+)x(\d+)\.(png|jpg|gif)$ /resizer/$1.$4?width=$2&amp;height=$3? last;</div></pre></td></tr></table></figure>
+<p>对形如/images/bla_500x400.jpg的文件请求，重写到/resizer/bla.jpg?width=500&amp;height=400地址，并会继续尝试匹配location。</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;nginx配置简单记录&quot;&gt;&lt;a href=&quot;#nginx配置简单记录&quot; class=&quot;headerlink&quot; title=&quot;nginx配置简单记录&quot;&gt;&lt;/a&gt;nginx配置简单记录&lt;/h2&gt;&lt;h4 id=&quot;location正则写法&quot;&gt;&lt;a href=&quot;#locat
+    
+    </summary>
+    
+    
+      <category term="HTTP" scheme="https://swinepig.github.io/tags/HTTP/"/>
+    
+  </entry>
+  
+  <entry>
     <title>Jedis2.1之ShardedJedisPool分析</title>
     <link href="https://swinepig.github.io/2015/11/27/ShardedJedisPool/"/>
     <id>https://swinepig.github.io/2015/11/27/ShardedJedisPool/</id>
@@ -338,6 +489,145 @@
       <category term="技术" scheme="https://swinepig.github.io/tags/%E6%8A%80%E6%9C%AF/"/>
     
       <category term="java" scheme="https://swinepig.github.io/tags/java/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Seam pages.xml</title>
+    <link href="https://swinepig.github.io/2015/11/27/seam/"/>
+    <id>https://swinepig.github.io/2015/11/27/seam/</id>
+    <published>2015-11-27T05:58:36.000Z</published>
+    <updated>2016-09-04T06:05:44.400Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="Seam-pages-xml"><a href="#Seam-pages-xml" class="headerlink" title="Seam pages.xml"></a>Seam pages.xml</h2><h3 id="Overview-What-is-pages-xml"><a href="#Overview-What-is-pages-xml" class="headerlink" title="Overview: What is pages.xml?"></a>Overview: What is pages.xml?</h3><p>The pages.xml file and any .page.xml file is Seam’s way of describing:</p>
+<ul>
+<li>RESTful (non-Faces) pages - That is, what to do with the URL parameters for a GET request.</li>
+<li>View restrictions - Restrict users from viewing pages based on an EL expression.</li>
+<li>Page actions - Invoke EL expressions whenever a page is accessed (RESTful or not).</li>
+<li>Page flow - The Seam :ref:<code>navigation-label</code> elements can replace the ordinary JSF navigation rules.</li>
+</ul>
+<h3 id="Global-pages-xml-file"><a href="#Global-pages-xml-file" class="headerlink" title="Global pages.xml file"></a>Global pages.xml file</h3><p>The global pages.xml file can be used to specify the settings for the entire application, or just those views / exceptions that are not handled by a view specific .page.xml file. For very simple applications, or very small teams it can be convenient to specify everything in one file. However for larger applications where more than two developers are working in parallel, it is a good idea to give every view it’s own .page.xml file, and leave the globally declared items in the pages.xml file.</p>
+<p>Things that should be in the pages.xml file:</p>
+<ul>
+<li>The <code>pages</code> element, of course. This tells Seam where to go if the user needs to log in, or if there is no conversation.</li>
+<li>Exception handling - <code>exception</code> elements for exceptions that do not have Seam annotations.</li>
+<li>actions that are to be applied to multiple views using wildcard view-ids.</li>
+</ul>
+<h3 id="Fine-grained-pages-xml-One-XML-file-per-page"><a href="#Fine-grained-pages-xml-One-XML-file-per-page" class="headerlink" title="Fine grained pages.xml - One XML file per page"></a>Fine grained pages.xml - One XML file per page</h3><p>In an application with a lot of pages, pages.xml might get very large. Also, if the Seam-style navigation rules are being used then the pages.xml file might become a point of contention for developers working on the application. To mitigate this, you can define a page file for each view id by creating a view-id.page.xml for each view file, which Seam will look for as a resource.</p>
+<p>See Seam-events-link</p>
+<p>See the contactlist example.</p>
+<p>Things that should be an a .page.xml file:</p>
+<ul>
+<li><p>The root element will be <code>page</code>.</p>
+<ul>
+<li>Make sure the view-id matches the URI of the page.</li>
+<li>Use login-required to protect pages from anonymous viewing.</li>
+</ul>
+</li>
+<li><p><restrict> expressions that allow the page to be viewed if the expressions evaluate to true.</restrict></p>
+</li>
+<li><param> declarations for the page.</li>
+<li><action> declarations for the page.</action></li>
+<li><navigation> rules for the page (replaces ordinary JSF navigation).</navigation></li>
+</ul>
+<h3 id="DTD"><a href="#DTD" class="headerlink" title="DTD"></a>DTD</h3><p>The DTD declaration for version 1.2 looks like this:</p>
+<p>.. code-block:: java</p>
+<p>   &lt;!DOCTYPE pages PUBLIC  “-//JBoss/Seam Pages Configuration DTD 1.2//EN”  “<a href="http://jboss.com/products/seam/pages-1.2.dtd&quot;&gt;" target="_blank" rel="external">http://jboss.com/products/seam/pages-1.2.dtd&quot;&gt;</a></p>
+<h3 id="Elements-and-attributes"><a href="#Elements-and-attributes" class="headerlink" title="Elements and attributes"></a>Elements and attributes</h3><h4 id="333"><a href="#333" class="headerlink" title="333"></a>333</h4><p>The <pages> element is the root of the pages.xml document. Seam will attempt load this file when it starts up, and if it doesn’t find it it will assume some defaults. The <pages> element has a few attributes that define global behavior for the application:</pages></pages></p>
+<p>=========================   ============================================<br>     Attribute                           Description<br>=========================   ============================================<br>no-conversation-view-id         Where to go if there’s no conversation.<br>login-view-id                   Where to go when the user isn’t logged in.<br>=========================   ============================================</p>
+<page><br>^^^^^^^^^^^^^^<br><br>The <page> element defines the behavior of a specific view, and it can be nested in the <pages> element in the overall pages.xml file, or it can be inside a view specific .page.xml file (see this section for more). With the <page> element you can define:<br><br> <em> Security restrictions for the view, plus where to go when the user is not logged in.
+ </em> Request parameter processing (a little like outjection).<br> <em> An action that will be invoked just before the view is rendered.
+ </em> Navigation rules for the view, either mapping outcome strings to other view IDs (similar to JSF navigation rules) or EL expression evaluation.<br><br>The attributes for the <page> element are:<br><br>==================== ========================================================================================================================================================================================================================================================================<br>     Attribute                           Description<br>==================== ========================================================================================================================================================================================================================================================================<br>view-id                   The relative URL of the page in the WAR.<br>login-view-id                If true, a NotLoggedIn exception will be thrown if Identity.getInstance().isLoggedIn() returns false. Works well if the login-view-id attribute is defined on the <pages> element. This is appliedbefore the restrict expressions and before the page actions.<br>action                    An EL expression that evaluates to an action method that will be invoked just before rendering the page. (see :ref:<code>action-label</code>)<br>==================== ========================================================================================================================================================================================================================================================================<br><br><br><param><br>^^^^^^^^^^^^^^<br><br>This element specifies any parameter processing that should happen for GET requests. The EL values are set after the RESTORE_VIEW(1) phase during a GET request, right after the conversation is restored. The parameter values are converted and stored directly into the Seam components via EL, the usual JSF ‘apply request values, update model values’ isn’t done here because there is no JSF component (view object) for these parameters.<br><br>====================   ====================================================================================================================================<br>     Attribute                        Description<br>====================   ====================================================================================================================================<br>       name                    The name of the request parameter (a.k.a. URL parameter)<br>       value                  An EL expression that will be set to the value of the request parameter. NOTE: This happens before any page action is invoked.<br>====================   ====================================================================================================================================<br><br>begin-conversation<br>^^^^^^^^^^^^^^^^^^^^^^^^^^<br><br>This will begin a new conversation, just like the @Begin annotation except it is done in the action phase.<br><br><br>.. _action-label:<br><br><action><br>^^^^^^^^^^^^<br><br>Page actions invoked before the RENDER_RESPONSE phase. This means that:<br><br> <em> For GET requests, the page parameters are applied before the page action is invoked.
+ </em> For JSF postback requests, the page action is invoked after the JSF action method.<br><br>====================  =========================================================================================================================================================================<br>     Attribute                           Description<br>====================  =========================================================================================================================================================================<br>       if                        Optional EL expression that will cause the action to execute if it evaluates to true.<br>      execute              EL method expression that will be invoked before the page renders. See seam-page-actions. Note that the page parameters are applied before the action is invoked.<br>====================  =========================================================================================================================================================================<br><br><restrict><br>^^^^^^^^^^^^<br><br>The <restrict> element specifies an EL expression that will be evaluated every time the page is accessed, much like the @Restrict annotation. If the expression returns false then an exception will be thrown which may be handled by an <exception> element.<br><br>For example:<br><br>.. code-block:: java<br><br>   <page view-id="/somepage.xhtml" login-required="true"><br>   <restrict>#{mySeamComponent.ableToSeeSomePage}</restrict><br>   </page> 
+
+<p>This will invoke the isAbleToSeeSomePage() method on the component bound to the name mySeamComponent. Of course, you can use the Seam security methods or any EL expression. The Seam Pages component will throw an AuthorizationException, which can be handled using the <exception> element in the global pages.xml file like this:</exception></p>
+<p>.. code-block:: java</p>
+   <exception class="org.jboss.seam.security.AuthorizationException"><br>   <end-conversation><br>   <redirect view-id="/accessdenied.xhtml"><br>   <message>You do not have the necessary security privileges to perform this action.</message><br>   </redirect><br>   </end-conversation></exception> 
+
+
+<p>.. note::<br>   <restrict> expressions are processed:</restrict></p>
+<pre><code>* After &lt;param&gt; elements, because those are processed after the RESTORE_VIEW(1) phase.
+* After the login-required attribute is processed.
+* Before any page actions.
+</code></pre><p><description><br>^^^^^^^^^^^^^^^^</description></p>
+<p>This is the label that will be given to the long running conversation (if there is one) on the page. The label is what will show up in the conversation switcher’s list of conversations. The description can contain EL expressions that will substitute in values that the end user can read.</p>
+<p>Don’t confuse the description of the conversation with the conversation id! They are not the same thing. You may want to even have the same conversation have different descriptions depending on what state of the page flow you are in. For example, a 4 page ‘wizard’ will have the same conversation and conversation id flow between pages, but the conversation description shown in the switcher should display the page number in the wizard (page 3 of 4).</p>
+<p>.. _navigation-label:</p>
+<p><navigation><br>^^^^^^^^^^^^^^^^</navigation></p>
+<p>Seam also allows you to specify navigation rules in pages.xml. This can be more convenient than specifying navigation in the typical JSF way.</p>
+<p>Take the following JSF navigation rule, for example:</p>
+<p>.. code-block:: java</p>
+<pre><code>&lt;navigation-rule&gt;         
+&lt;from-view-id&gt;/pagewithlink.xhtml&lt;/from-view-id&gt;  (1)        
+&lt;navigation-case&gt;             
+&lt;from-outcome&gt;first&lt;/from-outcome&gt;            (2)             
+&lt;to-view-id&gt;/first.xhtml&lt;/to-view-id&gt;         (3)             
+&lt;redirect/&gt;                                   (4)         
+&lt;/navigation-case&gt;     
+&lt;/navigation-rule&gt; 
+</code></pre><ul>
+<li>The view id of the page that produces the outcome.</li>
+<li>The outcome id.</li>
+<li>The destination view.</li>
+<li>Optional redirect tag for Redirect-after-post.</li>
+</ul>
+<p>Using Seam, this can be represented in pages.xml as:</p>
+<p>.. code-block:: java</p>
+<pre><code>&lt;page view-id=&quot;/pagewithlink.xhtml&quot;&gt;       (1)     
+&lt;navigation&gt;       
+&lt;rule if-outcome=&quot;first&quot;&gt;              (2)         
+&lt;redirect view-id=&quot;/first.xhtml&quot;/&gt;   (3)       
+&lt;/rule&gt;     
+&lt;/navigation&gt;   
+&lt;/page&gt;
+</code></pre><ul>
+<li>The view id of the page that produces the outcome.</li>
+<li>The outcome id is specified using <rule if-outcome="...">.</rule></li>
+<li>The destination is a redirect element in this case. </li>
+</ul>
+<p>Not only is this more compact than the JSF way, it is also possible to eliminate the outcome strings from the application and replace them with EL expressions using <rule if="... EL expr"> syntax:</rule></p>
+<p>.. code-block:: java</p>
+   <page view-id="/pagewithlink.xhtml">       (1)<br>   <navigation><br>   <rule if="#{theSfsb.goodToGo}">        (2)<br>   <redirect view-id="/first.xhtml">   (3)<br>   </redirect></rule><br>   </navigation><br>   </page> 
+
+
+
+<ul>
+<li>The view id of the page that produces the outcome.</li>
+<li>Instead of specifying an outcome string, we use an EL expression to invoke a method on a SFSB which will return a boolean.</li>
+<li>The destination is the same redirect element.</li>
+</ul>
+<exception><br>^^^^^^^^^^^^^^^^<br><br>The <exception> element tells Seam what to do if a particular exception is thrown from the application. It works a bit like a set of catch clauses in that the <exception> elements are processed in order and Seam will use the first match. So, you must put the most specific exception classes first just like catch.<br><br>Here are some typical exceptions:<br><br>.. code-block:: java<br><br>   <exception class="org.jboss.seam.security.NotLoggedInException"><br>   <redirect view-id="/accessdenied.xhtml"><br>   <message>You must be logged in to perform this action</message><br>   </redirect><br>   </exception><br>   <exception class="org.jboss.seam.security.AuthorizationException"><br>   <end-conversation>                                                                  (1)<br>   <redirect view-id="/accessdenied.xhtml"><br>   <message>You do not have the necessary privileges to perform this action.<br>   </message><br>   </redirect><br>   </end-conversation></exception><br>   <exception class="javax.persistence.PersistenceException"><br>   <redirect view-id="/error.xhtml"><br>   <message severity="ERROR">                                                       (2)<br>   Database access failed: #{handledException.message}                              (3)<br>   </message><br>   </redirect><br>   </exception><br>   <exception class="javax.servlet.ServletException"><br>   <redirect view-id="/error.xhtml"><br>   <message severity="WARN">Unexpected error: #{handledException.message}<br>   </message><br>   </redirect><br>   </exception><br>   <exception><br>   <redirect view-id="/error.xhtml"><br>   <message severity="WARN">Unexpected error: #{handledException.message}<br>   </message><br>   </redirect><br>   </exception> 
+
+
+
+<ul>
+<li>You can force Seam to end the current conversation with the <end-conversation> element.</end-conversation></li>
+<li>The severity level of the Faces message can be set using the severity attribute.</li>
+<li>Note that you can use EL in the message, and that there is a ‘handledException’ context variable set to the actual exception.</li>
+</ul>
+<p><redirect><br>^^^^^^^^^^^^^^^^</redirect></p>
+<p>The <redirect> element can be used inside navigation rules and exception handling rules. This causes JSF to redirect to the specified view id.</redirect></p>
+<p>Example:</p>
+<p>.. code-block:: java</p>
+   <redirect view-id="/some-other-view.xhtml"> 
+
+
+<p>Things to watch out for…<br>^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^</p>
+<ul>
+<li>To keep things consistent use only one method of specifying page flow, do not mix Seam style navigation rules and JSF style navigation rules.</li>
+<li>Don’t map the same view with fine graned .page.xml files and global pages.xml! This can cause hours of head-scratching and wondering why <param> elements are not working.</li>
+<li>Make sure the view-id matches the URI for the page when using .page.xml files! It’s a little redundant to specify the view id, but if you get it wrong very strange things will happen.</li>
+<li>Make sure that <param> expressions do not rely on any side effects of page actions or <restrict> expressions. Page parameters are processed right at the beginning of the JSF Lifecycle, before most other Seam page processing. For example, don’t count on <restrict> or login-required to cause a redirect before the params are processed.</restrict></restrict></li>
+<li><begin-conversation> can create lots of [<code>Abandoned Conversations</code>]! - Using <begin-conversation> without join=”true” in page.xml will create a new [<code>Long Running Conversation</code>] on each request. This may even appear to propagate values from page to page, but that is just due to rendering the values on the screen and then reading them back into the new conversation.</begin-conversation></begin-conversation></li>
+</ul>
+</redirect></exception></exception></exception></exception></restrict></restrict></action></pages></page></page></pages></page></page>]]></content>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;Seam-pages-xml&quot;&gt;&lt;a href=&quot;#Seam-pages-xml&quot; class=&quot;headerlink&quot; title=&quot;Seam pages.xml&quot;&gt;&lt;/a&gt;Seam pages.xml&lt;/h2&gt;&lt;h3 id=&quot;Overview-What-is-
+    
+    </summary>
+    
     
   </entry>
   
