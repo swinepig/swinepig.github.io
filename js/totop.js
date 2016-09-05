@@ -23,9 +23,7 @@ $("#rocket").click(function() {
     $(this).removeClass("about_item_hover");
   });
 
-$("#nav-menu a").hover(function (e) {
-
-    console.log($(this).index());
+$("#nav-menu a").click(function (e) {
 		// what tab was pressed
 		var whatTab = $(this).index();
 
@@ -55,7 +53,7 @@ $("#nav-menu a").hover(function (e) {
 		}
 
 		// Get the center of the element
-		var x = e.pageX - posX - buttonWidth / 2;
+		var x = e.pageX +howFar - posX - buttonWidth / 2;
 		var y = e.pageY - posY - buttonHeight / 2;
 
 		// Add the ripples CSS and start the animation
