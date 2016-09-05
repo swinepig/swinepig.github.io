@@ -58,8 +58,8 @@ $("#nav-menu a").click(function (e) {
 
 		// Add the ripples CSS and start the animation
 		$(".ripple").css({
-			width: buttonWidth,
-			height: buttonHeight,
+			width: buttonWidth+20,
+			height: buttonHeight+20,
 			top: y + 'px',
 			left: x + 'px'
 		}).addClass("rippleEffect");
