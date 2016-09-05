@@ -1,3 +1,4 @@
+@charset "UTF-8";
 /**
  *
  * @package Maupassant
@@ -1578,3 +1579,34 @@ em.search-keyword {
 .post-title a:hover::before {
   visibility: visible;
   transform: scaleX(1); }
+
+/* 导航效果开始 */
+/*  Ripple */
+.ripple {
+  width: 0;
+  height: 0;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.4);
+  -webkit-transform: scale(0);
+  -ms-transform: scale(0);
+  transform: scale(0);
+  position: absolute;
+  opacity: 1; }
+
+.rippleEffect {
+  -webkit-animation: rippleDrop .6s linear;
+  animation: rippleDrop .6s linear; }
+
+@-webkit-keyframes rippleDrop {
+  100% {
+    -webkit-transform: scale(2);
+    transform: scale(2);
+    opacity: 0; } }
+
+@keyframes rippleDrop {
+  100% {
+    -webkit-transform: scale(2);
+    transform: scale(2);
+    opacity: 0; } }
+
+/* 导航效果结束 */
