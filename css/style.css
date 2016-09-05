@@ -79,7 +79,8 @@ div {
     padding: 0;
     position: absolute;
     right: 0;
-    bottom: 0; }
+    bottom: 0;
+    overflow: hidden; }
     #header #nav-menu a {
       display: inline-block;
       padding: 3px 20px 3px;
@@ -1586,11 +1587,11 @@ em.search-keyword {
   width: 0;
   height: 0;
   border-radius: 50%;
-  background: green;
+  background: #ddd;
   -webkit-transform: scale(0);
   -ms-transform: scale(0);
   transform: scale(0);
-  position: relative;
+  position: absolute;
   opacity: 1; }
 
 .rippleEffect {
