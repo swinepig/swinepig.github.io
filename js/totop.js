@@ -23,7 +23,7 @@ $("#rocket").click(function() {
     $(this).removeClass("about_item_hover");
   });
 
-$("#nav-menu a").click(function (e) {
+$("#nav-menu a").hover(function (e) {
 
     console.log($(this).index());
 		// what tab was pressed
