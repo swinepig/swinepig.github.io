@@ -340,15 +340,54 @@ div {
     font-size: .9em; }
 
 /* for archive page starts*/
+.listing {
+  list-style: none; }
+
 .post-archive {
   font-size: 15px;
   line-height: 2;
-  padding-bottom: .8em; }
+  padding-bottom: .8em;
+  border-left: 4px solid #efefef; }
   .post-archive h2 {
     margin: 0;
-    font: bold 25px / 1.1 "ff-tisa-web-pro", Cambria, "Times New Roman", Georgia, Times, sans-serif; }
+    font: bold 25px / 1.1 "ff-tisa-web-pro", Cambria, "Times New Roman", Georgia, Times, sans-serif;
+    padding-left: 30px; }
   .post-archive .date {
-    padding-right: .7em; }
+    padding-right: .7em;
+    margin-left: 20px; }
+  .post-archive li:before {
+    content: " ";
+    display: inline-block;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    position: relative;
+    left: 0;
+    width: 6px;
+    height: 6px;
+    margin-left: -45px;
+    background: #CCCCCC;
+    -webkit-border-radius: 50%;
+    border-radius: 50%;
+    border: 1px solid #CCCCCC;
+    -webkit-transition-duration: 0.1s;
+    -moz-transition-duration: 0.1s;
+    -o-transition-duration: 0.1s;
+    -ms-transition-duration: 0.1s;
+    transition-duration: 0.1s;
+    -webkit-transition-timing-function: ease-in-out;
+    -moz-transition-timing-function: ease-in-out;
+    -o-transition-timing-function: ease-in-out;
+    -ms-transition-timing-function: ease-in-out;
+    transition-timing-function: ease-in-out;
+    -webkit-transition-delay: 0s;
+    -moz-transition-delay: 0s;
+    -o-transition-delay: 0s;
+    -ms-transition-delay: 0s;
+    transition-delay: 0s; }
+  .post-archive li:hover:before {
+    background: black;
+    border: 1px solid black; }
 
 /* for archive page ends*/
 /* middle*/
