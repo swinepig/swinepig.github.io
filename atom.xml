@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
-  <title>Swinepig</title>
-  <subtitle>情流感的博格</subtitle>
+  <title>情流感的博格</title>
+  <subtitle>时光的脚本总是走的太急 一个转身就把昨天变成了回忆</subtitle>
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://swinepig.github.io/"/>
