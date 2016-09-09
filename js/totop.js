@@ -64,5 +64,4 @@ $("#nav-menu a").click(function (e) {
 			left: x + 'px'
 		}).addClass("rippleEffect");
 	});
-
 })(jQuery);
