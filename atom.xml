@@ -77,14 +77,14 @@
     <link href="https://swinepig.github.io/2016/08/08/SpringResponseRequest/"/>
     <id>https://swinepig.github.io/2016/08/08/SpringResponseRequest/</id>
     <published>2016-08-08T13:43:33.000Z</published>
-    <updated>2016-09-05T08:02:38.410Z</updated>
+    <updated>2016-09-28T08:37:32.146Z</updated>
     
-    <content type="html"><![CDATA[<p>本文对SpringMVC两个注解@Response@Request做一些简单记录</p>
+    <content type="html"><![CDATA[<p>本文对SpringMVC两个注解@ResponseBody@RequestBody做一些简单记录</p>
 <h3 id="spring-mcv消息转化机制"><a href="#spring-mcv消息转化机制" class="headerlink" title="spring mcv消息转化机制"></a>spring mcv消息转化机制</h3><p>SpringMVC中使用@RequestBody,@ResponseBody注解实现Java对象和XML/JSON数据自动转换，Spring是怎么实现这个转换的呢？我们先了解下Spring的消息转换机制。</p>
 <p>在SpringMVC中，可以使用@RequestBody和@ResponseBody两个注解，分别完成请求报文到对象和对象到响应报文的转换，底层这种灵活的消息转换机制，就是Spring3.x中新引入的HttpMessageConverter即消息转换器机制。</p>
 <p>我们可以用下面的图，简单描述一下这个过程。</p>
 <p><img src="http://od0qigwk9.bkt.clouddn.com/sp_res_req1.png" alt="流程图"></p>
-<h3 id="Response篇"><a href="#Response篇" class="headerlink" title="@Response篇"></a>@Response篇</h3><p>作用：该注解用于将Controller的方法返回的对象，通过适当的HttpMessageConverter转换为指定格式(xml、json)后，写入到Response对象的body数据区。</p>
+<h3 id="ResponseBody篇"><a href="#ResponseBody篇" class="headerlink" title="@ResponseBody篇"></a>@ResponseBody篇</h3><p>作用：该注解用于将Controller的方法返回的对象，通过适当的HttpMessageConverter转换为指定格式(xml、json)后，写入到Response对象的body数据区。</p>
 <p>使用时机：返回的数据不是html标签的页面，而是其他某种格式的数据时（如json、xml等）</p>
 <p>@ResponseBody注解，以及HTTP Request Header中的Accept属性，Controller返回的Java对象可以自动被转换成对应的XML或者JSON数据。</p>
 <p>返回XML格式必须满足两个条件要求：</p>
@@ -125,8 +125,8 @@
     
     <summary type="html">
     
-      &lt;p&gt;本文对SpringMVC两个注解@Response@Request做一些简单记录&lt;/p&gt;
-&lt;h3 id=&quot;spring-mcv消息转化机制&quot;&gt;&lt;a href=&quot;#spring-mcv消息转化机制&quot; class=&quot;headerlink&quot; title=&quot;spring mcv消息
+      &lt;p&gt;本文对SpringMVC两个注解@ResponseBody@RequestBody做一些简单记录&lt;/p&gt;
+&lt;h3 id=&quot;spring-mcv消息转化机制&quot;&gt;&lt;a href=&quot;#spring-mcv消息转化机制&quot; class=&quot;headerlink&quot; title=&quot;spri
     
     </summary>
     
