@@ -613,7 +613,7 @@
     <link href="https://swinepig.github.io/2015/11/27/seam/"/>
     <id>https://swinepig.github.io/2015/11/27/seam/</id>
     <published>2015-11-27T05:58:36.000Z</published>
-    <updated>2016-09-04T06:50:55.978Z</updated>
+    <updated>2017-02-15T09:40:06.828Z</updated>
     
     <content type="html"><![CDATA[<h2 id="Seam-pages-xml"><a href="#Seam-pages-xml" class="headerlink" title="Seam pages.xml"></a>Seam pages.xml</h2><h3 id="Overview-What-is-pages-xml"><a href="#Overview-What-is-pages-xml" class="headerlink" title="Overview: What is pages.xml?"></a>Overview: What is pages.xml?</h3><p>The pages.xml file and any .page.xml file is Seam’s way of describing:</p>
 <ul>
@@ -652,23 +652,18 @@
 <table>
 <thead>
 <tr>
-<th></th>
 <th>Attribute</th>
 <th>Description</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td></td>
 <td>no-conversation-view-id</td>
 <td>Where to go if there’s no conversation.</td>
-<td></td>
 </tr>
 <tr>
-<td></td>
 <td>login-view-id</td>
 <td>Where to go when the user isn’t logged in.</td>
-<td></td>
 </tr>
 </tbody>
 </table>
@@ -706,23 +701,18 @@
 <table>
 <thead>
 <tr>
-<th></th>
 <th>Attribute</th>
 <th>Description</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td></td>
 <td>name</td>
 <td>The name of the request parameter (a.k.a. URL parameter)</td>
-<td></td>
 </tr>
 <tr>
-<td></td>
 <td>value</td>
 <td>An EL expression that will be set to the value of the request parameter. NOTE: This happens before any page action is invoked.</td>
-<td></td>
 </tr>
 </tbody>
 </table>
