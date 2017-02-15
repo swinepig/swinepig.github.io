@@ -1488,8 +1488,8 @@ table {
     font-weight: bold;
     padding: 5px 10px;
     border: 1px solid #E0E0E0;
-    border-bottom: 2px solid #909ba2; }
-  table td {
+    /*border-bottom: 2px solid #909ba2;*/ }
+  table olid #E0E0E0 td {
     padding: 5px 10px;
     border: 1px solid #E0E0E0; }
   table tr:nth-child(2n) {
