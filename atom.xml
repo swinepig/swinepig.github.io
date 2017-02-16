@@ -838,7 +838,7 @@
     <link href="https://swinepig.github.io/2014/06/13/zxapidoc/"/>
     <id>https://swinepig.github.io/2014/06/13/zxapidoc/</id>
     <published>2014-06-13T03:21:54.000Z</published>
-    <updated>2017-02-16T04:19:39.630Z</updated>
+    <updated>2017-02-16T05:33:46.861Z</updated>
     
     <content type="html"><![CDATA[<h2 id="设计目的"><a href="#设计目的" class="headerlink" title="设计目的"></a>设计目的</h2><p>由于征信中心数据传输均采用txt报文，需要采用一种较为灵活的方式对报文的解析及生成进行控制。</p>
 <h2 id="设计思路"><a href="#设计思路" class="headerlink" title="设计思路"></a>设计思路</h2><p>为了能够灵活的将txt报文和系统业务实体匹配，需要有一个配置文件对报文的结构和实体映射关系进行维护管理。</p>
@@ -846,21 +846,21 @@
 <h2 id="详细设计"><a href="#详细设计" class="headerlink" title="详细设计"></a>详细设计</h2><h3 id="配置文件设计"><a href="#配置文件设计" class="headerlink" title="配置文件设计"></a>配置文件设计</h3><p>配置文件样例：</p>
 <figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">ZxMsgFormats</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">ZxFormat</span> <span class="attr">name</span>=<span class="string">"NameNormalMessage"</span> <span class="attr">id</span>=<span class="string">"com.hengtian.zxjk.entity.message.NameNormalMessage"</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">ZxNode</span> <span class="attr">propertyName</span>=<span class="string">"FinancialOrganizationCode"</span> <span class="attr">length</span>=<span class="string">"14"</span> <span class="attr">type</span>=<span class="string">"AN"</span> <span class="attr">state</span>=<span class="string">"M"</span>/&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">ZxNode</span> <span class="attr">propertyName</span>=<span class="string">"MessageRiseTime"</span> <span class="attr">length</span>=<span class="string">"6"</span> <span class="attr">type</span>=<span class="string">"AN"</span> <span class="attr">state</span>=<span class="string">"M"</span>/&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">ZxNode</span> <span class="attr">propertyName</span>=<span class="string">"FlowNum1"</span> <span class="attr">length</span>=<span class="string">"3"</span> <span class="attr">type</span>=<span class="string">"AN"</span> <span class="attr">state</span>=<span class="string">"M"</span>/&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">ZxNode</span> <span class="attr">propertyName</span>=<span class="string">"ReportType"</span> <span class="attr">length</span>=<span class="string">"1"</span> <span class="attr">type</span>=<span class="string">"AN"</span> <span class="attr">state</span>=<span class="string">"M"</span>/&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">ZxNode</span> <span class="attr">propertyName</span>=<span class="string">"FlowNum2"</span> <span class="attr">length</span>=<span class="string">"3"</span> <span class="attr">type</span>=<span class="string">"AN"</span> <span class="attr">state</span>=<span class="string">"M"</span>/&gt;</span></div><div class="line">  <span class="tag">&lt;/<span class="name">ZxFormat</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">ZxMsgFormats</span>&gt;</span></div></pre></td></tr></table></figure>
 <h4 id="Element介绍"><a href="#Element介绍" class="headerlink" title="Element介绍"></a>Element介绍</h4><ul>
-<li><p>ZxFormat：每种业务报文对应的配置信息</p>
+<li><p><strong>ZxFormat</strong>：每种业务报文对应的配置信息</p>
 </li>
-<li><p>ZxNode：具体业务字段</p>
+<li><p><strong>ZxNode</strong>：具体业务字段</p>
 </li>
 </ul>
 <h4 id="Attribute介绍"><a href="#Attribute介绍" class="headerlink" title="Attribute介绍"></a>Attribute介绍</h4><ul>
-<li><p>id：报文对应的业务实体类型名</p>
+<li><p><strong>id</strong>：报文对应的业务实体类型名</p>
 </li>
-<li><p>propertyName：报文中对应的业务实体属性字段名称</p>
+<li><p><strong>propertyName</strong>：报文中对应的业务实体属性字段名称</p>
 </li>
-<li><p>length: 报文中属性的长度</p>
+<li><p><strong>length</strong>: 报文中属性的长度</p>
 </li>
-<li><p>type：报文中属性的数据类型</p>
+<li><p><strong>type</strong>：报文中属性的数据类型</p>
 </li>
-<li><p>state：报文中属性的状态，M表示必选，O表示可选</p>
+<li><p><strong>state</strong>：报文中属性的状态，M表示必选，O表示可选</p>
 </li>
 </ul>
 <h3 id="业务实体设计"><a href="#业务实体设计" class="headerlink" title="业务实体设计"></a>业务实体设计</h3><p>为了处理简便快速，报文业务实体采用平面型的设计方式。</p>

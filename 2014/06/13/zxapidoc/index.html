@@ -4,21 +4,21 @@
 <h2 id="详细设计"><a href="#详细设计" class="headerlink" title="详细设计"></a>详细设计</h2><h3 id="配置文件设计"><a href="#配置文件设计" class="headerlink" title="配置文件设计"></a>配置文件设计</h3><p>配置文件样例：</p>
 <figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">ZxMsgFormats</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">ZxFormat</span> <span class="attr">name</span>=<span class="string">"NameNormalMessage"</span> <span class="attr">id</span>=<span class="string">"com.hengtian.zxjk.entity.message.NameNormalMessage"</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">ZxNode</span> <span class="attr">propertyName</span>=<span class="string">"FinancialOrganizationCode"</span> <span class="attr">length</span>=<span class="string">"14"</span> <span class="attr">type</span>=<span class="string">"AN"</span> <span class="attr">state</span>=<span class="string">"M"</span>/&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">ZxNode</span> <span class="attr">propertyName</span>=<span class="string">"MessageRiseTime"</span> <span class="attr">length</span>=<span class="string">"6"</span> <span class="attr">type</span>=<span class="string">"AN"</span> <span class="attr">state</span>=<span class="string">"M"</span>/&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">ZxNode</span> <span class="attr">propertyName</span>=<span class="string">"FlowNum1"</span> <span class="attr">length</span>=<span class="string">"3"</span> <span class="attr">type</span>=<span class="string">"AN"</span> <span class="attr">state</span>=<span class="string">"M"</span>/&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">ZxNode</span> <span class="attr">propertyName</span>=<span class="string">"ReportType"</span> <span class="attr">length</span>=<span class="string">"1"</span> <span class="attr">type</span>=<span class="string">"AN"</span> <span class="attr">state</span>=<span class="string">"M"</span>/&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">ZxNode</span> <span class="attr">propertyName</span>=<span class="string">"FlowNum2"</span> <span class="attr">length</span>=<span class="string">"3"</span> <span class="attr">type</span>=<span class="string">"AN"</span> <span class="attr">state</span>=<span class="string">"M"</span>/&gt;</span></div><div class="line">  <span class="tag">&lt;/<span class="name">ZxFormat</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">ZxMsgFormats</span>&gt;</span></div></pre></td></tr></table></figure>
 <h4 id="Element介绍"><a href="#Element介绍" class="headerlink" title="Element介绍"></a>Element介绍</h4><ul>
-<li><p>ZxFormat：每种业务报文对应的配置信息</p>
+<li><p><strong>ZxFormat</strong>：每种业务报文对应的配置信息</p>
 </li>
-<li><p>ZxNode：具体业务字段</p>
+<li><p><strong>ZxNode</strong>：具体业务字段</p>
 </li>
 </ul>
 <h4 id="Attribute介绍"><a href="#Attribute介绍" class="headerlink" title="Attribute介绍"></a>Attribute介绍</h4><ul>
-<li><p>id：报文对应的业务实体类型名</p>
+<li><p><strong>id</strong>：报文对应的业务实体类型名</p>
 </li>
-<li><p>propertyName：报文中对应的业务实体属性字段名称</p>
+<li><p><strong>propertyName</strong>：报文中对应的业务实体属性字段名称</p>
 </li>
-<li><p>length: 报文中属性的长度</p>
+<li><p><strong>length</strong>: 报文中属性的长度</p>
 </li>
-<li><p>type：报文中属性的数据类型</p>
+<li><p><strong>type</strong>：报文中属性的数据类型</p>
 </li>
-<li><p>state：报文中属性的状态，M表示必选，O表示可选</p>
+<li><p><strong>state</strong>：报文中属性的状态，M表示必选，O表示可选</p>
 </li>
 </ul>
 <h3 id="业务实体设计"><a href="#业务实体设计" class="headerlink" title="业务实体设计"></a>业务实体设计</h3><p>为了处理简便快速，报文业务实体采用平面型的设计方式。</p>
@@ -33,7 +33,7 @@
 <p>自定义异常异常：</p>
 <p>待定</p>
 <p>具体实现代码可见<a href="https://github.com/swinepig/JAVA" target="_blank" rel="external">GitHub</a></p>
-</div><script type="text/javascript" src="/js/share.js?v=0.0.0" async></script><a data-url="https://swinepig.github.io/2014/06/13/zxapidoc/" data-id="ciz7vp8pv0010umshdckz2sfx" class="article-share-link">分享到</a><div class="tags"></div><div class="post-nav"><a href="/2015/07/22/recursion/" class="pre">两个简单递归程序</a></div></div></div></div><div class="pure-u-1 pure-u-md-3-4 single_page"><div id="footer">© <a href="/." rel="nofollow">情流感的博格.</a> Powered by<a rel="nofollow" target="_blank" href="https://hexo.io"> Hexo.</a><a rel="nofollow" target="_blank" href="http://www.miitbeian.gov.cn/"> 浙ICP备16030196号</a><br/><img src="/images/beian.png" class="nofancybox"/><a rel="nofollow" target="_blank" href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=33010602007686"> 浙公网安备 33010602007686号</a><br/><a rel="nofollow" target="_blank" href="https://portal.qiniu.com"><img src="/images/qiniu.png" class="nofancybox"/></a></div></div></div><a id="rocket" href="#top" class="show"></a><script type="text/javascript" src="/js/totop.js?v=0.0.0" async></script><script type="text/javascript" src="//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.pack.js" async></script><script type="text/javascript" src="/js/fancybox.js?v=0.0.0" async></script><link rel="stylesheet" type="text/css" href="/css/jquery.fancybox.css?v=0.0.0"><script>var _hmt = _hmt || [];
+</div><script type="text/javascript" src="/js/share.js?v=0.0.0" async></script><a data-url="https://swinepig.github.io/2014/06/13/zxapidoc/" data-id="ciz7zwkd00010cpsh7ir6e941" class="article-share-link">分享到</a><div class="tags"></div><div class="post-nav"><a href="/2015/07/22/recursion/" class="pre">两个简单递归程序</a></div></div></div></div><div class="pure-u-1 pure-u-md-3-4 single_page"><div id="footer">© <a href="/." rel="nofollow">情流感的博格.</a> Powered by<a rel="nofollow" target="_blank" href="https://hexo.io"> Hexo.</a><a rel="nofollow" target="_blank" href="http://www.miitbeian.gov.cn/"> 浙ICP备16030196号</a><br/><img src="/images/beian.png" class="nofancybox"/><a rel="nofollow" target="_blank" href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=33010602007686"> 浙公网安备 33010602007686号</a><br/><a rel="nofollow" target="_blank" href="https://portal.qiniu.com"><img src="/images/qiniu.png" class="nofancybox"/></a></div></div></div><a id="rocket" href="#top" class="show"></a><script type="text/javascript" src="/js/totop.js?v=0.0.0" async></script><script type="text/javascript" src="//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.pack.js" async></script><script type="text/javascript" src="/js/fancybox.js?v=0.0.0" async></script><link rel="stylesheet" type="text/css" href="/css/jquery.fancybox.css?v=0.0.0"><script>var _hmt = _hmt || [];
 (function() {
   var hm = document.createElement("script");
   hm.src = "//hm.baidu.com/hm.js?b623fabd5cba99249d5792f478102d0c";

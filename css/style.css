@@ -240,7 +240,9 @@ div {
         display: inline-block;
         margin: 0 5px;
         padding: 0 5px;
-        background: #f7f8f8; }
+        background: white;
+        border: 1px solid #e1e1e8;
+        color: #d14; }
       .post .post-content p a {
         color: #01579f;
         padding-bottom: 2px;
@@ -273,7 +275,9 @@ div {
         display: inline-block;
         margin: 0 5px;
         padding: 0px 5px;
-        background: #f7f8f8; }
+        background: white;
+        color: #d14;
+        border: 1px solid #e1e1e8; }
       .post .post-content ul a, .post .post-content ol a {
         color: #01579f;
         padding-bottom: 2px;
