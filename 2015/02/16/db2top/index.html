@@ -1,0 +1,95 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta http-equiv="content-type" content="text/html; charset=utf-8"><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"><meta content="yes" name="apple-mobile-web-app-capable"><meta content="black-translucent" name="apple-mobile-web-app-status-bar-style"><meta content="telephone=no" name="format-detection"><meta name="description"><meta name="google-site-verification" content="6GTeiOhqimfTtuUIQtS8CqdXJzM4lPPMeXjbvNAsm5w"><title>db2top工具详解（翻译） | 情流感的博格</title><link rel="stylesheet" type="text/css" href="/css/normalize.min.css?v=0.0.0"><link rel="stylesheet" type="text/css" href="/css/pure-min.css?v=0.0.0"><link rel="stylesheet" type="text/css" href="/css/grids-responsive-min.css?v=0.0.0"><link rel="stylesheet" type="text/css" href="/css/style.css?v=0.0.0"><link rel="stylesheet" href="https://cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css"><script type="text/javascript" src="/js/jquery.min.js?v=0.0.0"></script><link rel="Shortcut Icon" type="image/x-icon" href="/favicon.ico"><link rel="apple-touch-icon" href="/apple-touch-icon.png"><link rel="apple-touch-icon-precomposed" href="/apple-touch-icon.png"><link rel="alternate" type="application/atom+xml" href="/atom.xml"></head><body><div class="body_container"><div id="header"><div class="site-name"><h1 class="hidden">db2top工具详解（翻译）</h1><a id="logo" href="/.">情流感的博格</a><p class="description">时光的脚本总是走的太急 一个转身就把昨天变成了回忆</p></div><div id="nav-menu"><a href="/." class="current"><i class="fa fa-home"> 首页</i></a><a href="/archives/"><i class="fa fa-archive"> 归档</i></a><a href="/about/"><i class="fa fa-user"> 关于</i></a><a href="/history/"><i class="fa fa-book"> 历史</i></a><a href="/atom.xml"><i class="fa fa-rss"> 订阅</i></a></div></div><div id="layout" class="pure-g"><div class="pure-u-1 pure-u-md-3-4 single_page"><div class="content_container"><div class="post"><h1 class="post-title">db2top工具详解（翻译）</h1><div class="post-meta">Feb 16, 2015<span> | </span><span class="category"><a href="/categories/database/">database</a></span><script src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js" async></script><span id="busuanzi_container_page_pv"> | <span id="busuanzi_value_page_pv"></span><span> Hits</span></span></div><div class="post-content"><blockquote>
+<p>本文作者：情流感</p>
+<p>本文地址：</p>
+<p>本文由 @情流感 创作，转载请保留此声明。</p>
+<p>所有权保留，请勿用作商业用途。</p>
+</blockquote>
+<p>工作中因用到DB2数据库，所以对于Command db2top使用频率非常高，碍于网上对其介绍大都是E文，想到为自己方便使用决定将其翻译为国语</p>
+<p>进入db2top画面后有许多关键字来对画面的导航。比如<code>d - Database</code> <code>t - Tablespaces</code>等</p>
+<a id="more"></a>
+<h3 id="Database-d"><a href="#Database-d" class="headerlink" title="Database (d)"></a>Database (d)</h3><p><img src="http://od0qigwk9.bkt.clouddn.com/db2top_2.jpg" alt="Database screen"></p>
+<p>在数据库屏幕，db2top提供了一组对整个数据库的性能监控单元。</p>
+<p>用户可以监视活动会话（MaxActSess），排序内存（SortMemory）和日志空间（LogUsed）。这些监测元素可以帮助用户确定这些元素的当前使用百分比。如果这些因素中的一个开始达到很高甚至100％时，用户应该开始调查发生了什么事。</p>
+<p>当前时间和数据库开始时间(Start Time)相比能让我们了解数据库运行了多久。这个值结合其他检测元素去调查那些已存在一段时间的问题是非常有用的。</p>
+<p>锁的使用（LockUsed）和升级（LockEscals）对缩小锁定问题非常有帮助。如果LockEscals数量很大时，则增加LOCKLIST和MAXLOCKS数据库参数是一个好主意或者寻找那些引起这个问题的不良查询语句。</p>
+<p>L_Reads，P_Reads和A_Reads代表逻辑读，物理读和异步读取。结合的命中率（HitRatio）值，这些变量对于评估大多数的读取发生在存储器中还是磁盘I / O里是非常重要的。因为磁盘的I / O比存储器存取慢得多，用户更喜欢访问在内存中的数据。当用户看到HitRatio下降低则可以查看缓冲池(bufferpools)是不是不够大了，或是不是有查询进行了太多的全白扫描而导致页面数据从内存洗冲到磁盘。</p>
+<p>和读类似，A_Writes代表异步写入，这表明数据页是由异步页清洁剂之前写的缓冲池空间是必需的。通过db2top 刷新频率这段时间内的写数量我们还能知道有多少写请求发生了。还能计算每次写入的平均花费时间这对分析I/O瓶颈引起的一些性能问题有所帮助。当A_Writes/Writes的比值越高则写I/O性能越高。</p>
+<p>SortOvf代表<code>排序溢出</code>。如果用户发现这个数字变为非常高，就需要寻找查询了。排序溢出发生在SORTHEAP不足够大，导致排序(Sort)或HashJoin操作可能会溢出数据到临时空间。有时该值随着SORTHEAP增加而降低，但在其他情况下，可能没有多大帮助，如果进行排序的数据集比可分配给SORTHEAP内存大得多。如果请求的数据量超过缓冲池可容纳的临时空间大小那么就可能需要物理I/O来进行SORT或哈希链接在这种情况下排序溢出将是很大的瓶颈。因此优化查询来减少排序溢出的数量能显著提高系统的性能。</p>
+<p>在数据库屏幕的最后四个条目显示的平均物理读取时间（AvgPRdTime），平均直接读取时间（AvgDRdTime），物理平均写入时间（AvgPWrTime）和平均直接写入时间（AvgDWrTime）。这四个项目直接反映I/ O子系统性能。如果用户发现一个意想不到的大量的时间花费在每个读或写操作，进一步的调查应到I/ O子系统。</p>
+<p>正常情况下，DB2 排序发生在内存中，这块内存叫做排序堆，即 SORTHEAP。当需要排序的数据超出 SORTHEAP 大小限制时，就会发生<code>排序溢出</code>。溢出的数据会写到临时表中，这会产生更多的 I/O，因此对性能会有较大影响。</p>
+<h3 id="Tablespace-t"><a href="#Tablespace-t" class="headerlink" title="Tablespace (t)"></a>Tablespace (t)</h3><p><img src="http://od0qigwk9.bkt.clouddn.com/db2top_3.jpg" alt="Tablespace screen"></p>
+<p>表空间屏幕提供每个表空间的详细信息。Hit Ratio%和Async Reads%列对用户来说是非常重要的。在数据库级别仅仅监视缓冲池命中率，你可能无法获得足够精确的信息。在包含多个表空间的环境中，在一个表空间中发生了不良查询现象会被所有表空间平均命中率遮蔽。在每个表空间级别上监测Hit Ratio%和Async Reads%对于分析系统工作细节很有帮助。</p>
+<p>Delta逻辑读取（写）和Delta物理读取（写）（Delta 逻辑读（写入）和Delta 物理读（写入））说明这些表空间如何“忙”的。一些不太活跃的表空间可能不具有非常高的缓冲命中率。在大多数情况下最好使用活动性更大的表空间。</p>
+<p>想要左右滚动屏幕可以使用键盘上的左，右箭头键。所有的列信息不能在一个屏幕上显示可以通过按下左或右箭头键来查看。</p>
+<p>Space Used,Total Size和% full能够很方便的查看各表空间的使用率情况，还能从其他列信息中查看表空间类型是DMS还是SMS。</p>
+<h3 id="Dynamic-SQL-D"><a href="#Dynamic-SQL-D" class="headerlink" title="Dynamic SQL (D)"></a>Dynamic SQL (D)</h3><p><img src="http://od0qigwk9.bkt.clouddn.com/db2top_4.jpg" alt="Dynamic SQL screen"></p>
+<p>动态SQL屏幕提供缓存的SQL语句的详细信息。用户可以再此屏幕对特定SQL语句产生执行计划(DB2EXPLN)和(db2exfmt)。</p>
+<p>执行数量（Num Execution）和平均执行时间（Avg ExecTime）可以用来了解查询语句执行了多少次和平均运行时间。通过平均CPU时间（Avg CpuTime）与平均执行时间（Avg ExecTime）比较能看出执行时间花费在CPU上还是花在了等待锁或I/O上。</p>
+<p>行读取(Row read)和行写入(Row written)能够明白查询的行为。例如，<code>如果用户看到一个SELECT查询语句关联了大量的写，这可能表明该查询可能会有排序（哈希联接）溢出而且需要进一步调整来以避免数据溢出临时空间。</code></p>
+<p>数据，索引的Hit ratio（命中率％）和临时l_reads来帮助用户轻松解决缓冲池大小是否需要调整。（AvgSort PerExec）和排序时间能计算出在一次执行期间进行了多少排序。</p>
+<p>db2top实用程序还提供了产生DB2EXPLN或db2exfmt报告功能而无需手动运行该命令。通过动态SQL屏幕上输入一个大写L，它会提示你输入一个SQL字符串哈希。SQL散列字符串位于表中的第一列，例如“00000005429283171301468277.”用户可以复制该字符串并将其粘贴到光标提示处，按下Enter键，如下图：</p>
+<p><img src="http://od0qigwk9.bkt.clouddn.com/db2top_5.jpg" alt="Dynamic SQL screen -- Query text"></p>
+<p>然后，选择e选项生成DB2EXPLN输出，或者选择x选项生成db2exfmt输出如果EXPLAIN.DDL已经导入到数据库中。</p>
+<h3 id="Session-l"><a href="#Session-l" class="headerlink" title="Session (l)"></a>Session (l)</h3><p><img src="http://od0qigwk9.bkt.clouddn.com/db2top_6.jpg" alt="Session screen"></p>
+<p>会话屏幕提供每个应用程序会话的详细信息。第一列显示了应用句柄，下面三列：CPU％总计，IO％总计，MEM％总计表示本应用消耗资源的百分比。在大多数情况下，每个会话表示一个连接。</p>
+<p>在这些列之后还显示了应用状态，以及一些统计数据读写的列。用户还可以看到LocksHeld，Sort(sec)，LogUsed信息在此屏幕上。当事务日志耗尽空间时LogUsed信息就很有帮助了。通过使用这种显示器的个监控元素，用户可以得到一些想法那些应用程序消耗大部分日志空间。</p>
+<p>虽然会话屏幕上的信息和数据库屏幕上的信息差不多，但是会话屏幕上的信息为每个应用程序的。做性能分析要结合不同的屏幕。例如，当一些读问题显示在数据库屏幕上时可以进一步通过查看会话屏和动态SQL画面上以缩小它的特定应用程序或SQL。</p>
+<p>在session屏幕按i查找哪些正在等待Lock的应用</p>
+<h3 id="Bufferpool-b"><a href="#Bufferpool-b" class="headerlink" title="Bufferpool (b)"></a>Bufferpool (b)</h3><p><img src="http://od0qigwk9.bkt.clouddn.com/db2top_7.jpg" alt="Bufferpool screen"></p>
+<p>在此屏幕上，db2top提供了每个缓冲池的信息。用户可以看到的一些缓冲池的基本信息，如读，写，和大小，还可以看到其他信息，如缓冲池命中率％和异步读取％率。</p>
+<h3 id="Lock-U"><a href="#Lock-U" class="headerlink" title="Lock (U)"></a>Lock (U)</h3><p><img src="http://od0qigwk9.bkt.clouddn.com/db2top_8.jpg" alt="Lock screen"></p>
+<p>一个锁定的问题是应用程序诊断中最常见的问题之一。通过db2top，用户可以很容易地列出了应用程序持有的锁。</p>
+<p>使用db2top也更容易分析锁等待的问题。下面图9，10和11显示其中一个db2bp应用程序正在等待另一db2bp会话。</p>
+<p><img src="http://od0qigwk9.bkt.clouddn.com/db2top_9.jpg" alt="图9 Lock waiting -- Application status"></p>
+<p>在图9中，两代理（代理24和代理9）处于第一列：Agent Id(state)。你可以看到，在第三列（应用状态）其中一个代理（代理24）被卡在锁等待状态。</p>
+<p><img src="http://od0qigwk9.bkt.clouddn.com/db2top_10.jpg" alt="图10 Lock waiting -- Lock status"></p>
+<p>如果用户希望看到更多信息，请按键盘上的左箭头，如图10。</p>
+<p><img src="http://od0qigwk9.bkt.clouddn.com/db2top_11.jpg" alt="图11 Lock waiting -- Table name"></p>
+<p>在这个特殊的例子中，如图11看到的那样，代理24试图去请求表TAOEWANG.T1上的S锁，但是它被拥有T1表IX锁的代理9锁定。</p>
+<p>db2to在此屏幕提供了另一个非常有用的功能：锁链分析。并不总是容易弄清楚锁等待的关系，如果有多个应用程序涉及。db2top实用程序提供了一个有用的特性来动态绘制锁链，使其更容易为用户了解应用程序之间的锁定关系。</p>
+<p>通过输入大写L，显示锁链。就像图12显示的这样：</p>
+<p><img src="http://od0qigwk9.bkt.clouddn.com/db2top_12.jpg" alt="图12 Lock waiting -- Lock chain"></p>
+<h3 id="Table-T"><a href="#Table-T" class="headerlink" title="Table (T)"></a>Table (T)</h3><p><img src="http://od0qigwk9.bkt.clouddn.com/db2top_13.jpg" alt="Table screen"></p>
+<p>表屏幕显示数据库中的表的信息。一段时间中没有访问的表显示为白色。正在存取（活跃）表显示绿色。</p>
+<p>有关于表本身的信息。列中的数据页(Data pages)和索引页(Index pages)代表多少页在表中。表类型和表大小也是表的很重要的属性。</p>
+<p>另一个重要的列是行溢出/秒(Rows Overflows/s)，这表明每秒行溢出的数量。溢出的行表明发生数据碎片。<code>如果这个数字很高，用户应该使用REORG实用程序，清理这种碎片重组表提高表的性能。</code></p>
+<h3 id="Bottlenecks-B"><a href="#Bottlenecks-B" class="headerlink" title="Bottlenecks (B)"></a>Bottlenecks (B)</h3><p><img src="http://od0qigwk9.bkt.clouddn.com/db2top_14.jpg" alt="图14 Bottlenecks screen"></p>
+<p>瓶颈分析对于一个DBA来说是不能忽视。他们想知道哪个代理（应用）严重地限制了整个系统的性能。</p>
+<p>标题“瓶颈”右下角的方框是关于各种数据库操作的时序分析：</p>
+<p>The elapsed time used to calculate the percentage of each operation = (wait_lock_time + sort_time + bp_read_time + bp_write_time + async_read_time + async_write_time + prefetch_waite_time + direct_read_time + direct_write_time).</p>
+<p>以下为每个操作所估计的百分比：</p>
+<ul>
+<li>wait lock ms: (wait lock time)/(elapsed time) = 80%</li>
+<li>sort ms : (sort time)/(elapsed time) = 0</li>
+<li>bp r/w ms: (buffer pool read and write time)/(elapsed time) = 10%</li>
+<li>async r/w ms: (async read and write)/(elapsed time) = 6%</li>
+<li>pref wait ms: (prefetch_waite_time)/(elapsed time) = 2%</li>
+<li>dir r/w ms: (direct read and write time)/(elapsed time) = 2%</li>
+</ul>
+<p>这个屏幕的主要显示部分为对于每一种系统资源哪个agent(应用)占用最大</p>
+<p>屏幕上显示的服务器资源显示db2top所监控的服务器资源：</p>
+<ul>
+<li>Cpu: Which agent consumes the most CPU time.</li>
+<li>SessionCpu: Which application session consumes the most CPU time.</li>
+<li>IO r/w: Which agent consumes the most I/O read and write.</li>
+<li>Memory: Which agent consumes the most memory.</li>
+<li>Lock: Which agent is holding the most locks.</li>
+<li>Sorts: Which agent has executed the biggest number of sorting.</li>
+<li>Sort Times: Which agent consumes the longest sorting time.</li>
+<li>Log Used: Which agent consumes the most log space in the most recent unit of work.</li>
+<li>Overflows: Which agent has the most number of sort overflows.</li>
+<li>RowsRead: Which agent has read the most number of rows of records.</li>
+<li>RowsWritten: Which agent has written the most number of rows of records.</li>
+<li>TQ r/w: Which agent has sent and received most number of rows on table queues.</li>
+<li>MaxQueryCost: Which agent has the max SQL execution time estimated by the compiler.</li>
+<li>XDAPages: Which agent has the most number of pages for XDA data (available in V9.1GA and after releases).</li>
+</ul>
+<p>例如：图14示出了代理683表明db2bp（DB2 back end process）是很明显的瓶颈。</p>
+</div><script type="text/javascript" src="/js/share.js?v=0.0.0" async></script><a data-url="https://swinepig.github.io/2015/02/16/db2top/" data-id="ciz80uhlg000kq3sheph5g3y8" class="article-share-link">分享到</a><div class="tags"></div><div class="post-nav"><a href="/2015/07/22/recursion/" class="pre">两个简单递归程序</a><a href="/2014/06/13/zxapidoc/" class="next">某证信接口报文处理设计</a></div></div></div></div><div class="pure-u-1 pure-u-md-3-4 single_page"><div id="footer">© <a href="/." rel="nofollow">情流感的博格.</a> Powered by<a rel="nofollow" target="_blank" href="https://hexo.io"> Hexo.</a><a rel="nofollow" target="_blank" href="http://www.miitbeian.gov.cn/"> 浙ICP备16030196号</a><br/><img src="/images/beian.png" class="nofancybox"/><a rel="nofollow" target="_blank" href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=33010602007686"> 浙公网安备 33010602007686号</a><br/><a rel="nofollow" target="_blank" href="https://portal.qiniu.com"><img src="/images/qiniu.png" class="nofancybox"/></a></div></div></div><a id="rocket" href="#top" class="show"></a><script type="text/javascript" src="/js/totop.js?v=0.0.0" async></script><script type="text/javascript" src="//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.pack.js" async></script><script type="text/javascript" src="/js/fancybox.js?v=0.0.0" async></script><link rel="stylesheet" type="text/css" href="/css/jquery.fancybox.css?v=0.0.0"><script>var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "//hm.baidu.com/hm.js?b623fabd5cba99249d5792f478102d0c";
+  var s = document.getElementsByTagName("script")[0];
+  s.parentNode.insertBefore(hm, s);
+  })();
+</script><script type="text/javascript" src="/js/codeblock-resizer.js?v=0.0.0"></script><script type="text/javascript" src="/js/smartresize.js?v=0.0.0"></script></div></body></html>
