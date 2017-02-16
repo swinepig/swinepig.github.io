@@ -952,7 +952,7 @@
     <link href="https://swinepig.github.io/2014/06/13/zxapidoc/"/>
     <id>https://swinepig.github.io/2014/06/13/zxapidoc/</id>
     <published>2014-06-13T03:21:54.000Z</published>
-    <updated>2017-02-16T05:33:46.861Z</updated>
+    <updated>2017-02-16T08:34:50.109Z</updated>
     
     <content type="html"><![CDATA[<h2 id="设计目的"><a href="#设计目的" class="headerlink" title="设计目的"></a>设计目的</h2><p>由于征信中心数据传输均采用txt报文，需要采用一种较为灵活的方式对报文的解析及生成进行控制。</p>
 <h2 id="设计思路"><a href="#设计思路" class="headerlink" title="设计思路"></a>设计思路</h2><p>为了能够灵活的将txt报文和系统业务实体匹配，需要有一个配置文件对报文的结构和实体映射关系进行维护管理。</p>
@@ -989,6 +989,14 @@
 <p>自定义异常异常：</p>
 <p>待定</p>
 <p>具体实现代码可见<a href="https://github.com/swinepig/JAVA" target="_blank" rel="external">GitHub</a></p>
+<div id="badge-container-akfish-hexo-math-b82e65" class="hexo-github" style="width: 100%"></div>
+<script src="/hexo-github/badge.js"></script>
+<script type="text/javascript">
+  loadStyle("/hexo-github/style.css");
+  loadStyle("/hexo-github/octicons/octicons.css");
+  new Badge("#badge-container-akfish-hexo-math-b82e65", "akfish", "hexo-math", "b82e65", false);
+</script>
+
 ]]></content>
     
     <summary type="html">
