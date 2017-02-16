@@ -51,19 +51,19 @@
   </entry>
   
   <entry>
-    <title>born</title>
+    <title>诞生记</title>
     <link href="https://swinepig.github.io/2017/01/22/born/"/>
     <id>https://swinepig.github.io/2017/01/22/born/</id>
     <published>2017-01-22T08:17:23.000Z</published>
-    <updated>2017-01-22T08:46:16.703Z</updated>
+    <updated>2017-02-16T04:20:12.289Z</updated>
     
-    <content type="html"><![CDATA[<h1 id="诞生记"><a href="#诞生记" class="headerlink" title="诞生记"></a>诞生记</h1><p>2016年12月22日晚上吃完饭 ： 宝妈肚子开始有规律的疼起来<br>2016年12月22日20点多 ： 开始收拾东西目的地浙江省妇保急诊室<br>2016年12月22日21点左右 ： 急诊后医生告知开半指，要开一指半才能去待产室等两小时再去观察，这时宝妈疼的已经受不了了<br>2016年12月22日22点半 ： 宝妈疼的死去活来要求提前检查<br>2016年12月22日23点不到 ： 检查已开两指，宝妈一个人被推入待产室<br>半夜 ： 奶爸焦急等待，心里既高兴又忐忑，希望母子平安<br>2016年12月23日凌晨5点左右 ： 导乐告知宝宝头已经露出来了，奶爸想既然头露出来了应该快了<br>2016年12月23日凌晨5点半 ： 没有消息继续等，期间陆陆续续有医生喊家属名字<br>2016年12月23日凌晨5点58分 ：<br>“XXX家属在吗？”<br>“在” 奶爸立马冲了过去<br>“给你看看，生了个大胖儿子，早上5点58分生的，记住了”<br>“好好，我看看” 奶爸立马掏出手机拍了三张照，看了照片奶爸想嘴巴真是大好难看呀!</p>
+    <content type="html"><![CDATA[<p>2016年12月22日晚上吃完饭 ： 宝妈肚子开始有规律的疼起来<br>2016年12月22日20点多 ： 开始收拾东西目的地浙江省妇保急诊室<br>2016年12月22日21点左右 ： 急诊后医生告知开半指，要开一指半才能去待产室等两小时再去观察，这时宝妈疼的已经受不了了<br>2016年12月22日22点半 ： 宝妈疼的死去活来要求提前检查<br>2016年12月22日23点不到 ： 检查已开两指，宝妈一个人被推入待产室<br>半夜 ： 奶爸焦急等待，心里既高兴又忐忑，希望母子平安<br>2016年12月23日凌晨5点左右 ： 导乐告知宝宝头已经露出来了，奶爸想既然头露出来了应该快了<br>2016年12月23日凌晨5点半 ： 没有消息继续等，期间陆陆续续有医生喊家属名字<br>2016年12月23日凌晨5点58分 ：<br>“XXX家属在吗？”<br>“在” 奶爸立马冲了过去<br>“给你看看，生了个大胖儿子，早上5点58分生的，记住了”<br>“好好，我看看” 奶爸立马掏出手机拍了三张照，看了照片奶爸想嘴巴真是大好难看呀!</p>
 <p><img src="https://cldup.com/dTxpPi9lDf.thumb.png" alt="N|Solid"></p>
 ]]></content>
     
     <summary type="html">
     
-      &lt;h1 id=&quot;诞生记&quot;&gt;&lt;a href=&quot;#诞生记&quot; class=&quot;headerlink&quot; title=&quot;诞生记&quot;&gt;&lt;/a&gt;诞生记&lt;/h1&gt;&lt;p&gt;2016年12月22日晚上吃完饭 ： 宝妈肚子开始有规律的疼起来&lt;br&gt;2016年12月22日20点多 ： 开始收拾东西目的地浙江省
+      &lt;p&gt;2016年12月22日晚上吃完饭 ： 宝妈肚子开始有规律的疼起来&lt;br&gt;2016年12月22日20点多 ： 开始收拾东西目的地浙江省妇保急诊室&lt;br&gt;2016年12月22日21点左右 ： 急诊后医生告知开半指，要开一指半才能去待产室等两小时再去观察，这时宝妈疼的已经受不了了
     
     </summary>
     
@@ -830,6 +830,62 @@
       <category term="技术" scheme="https://swinepig.github.io/tags/%E6%8A%80%E6%9C%AF/"/>
     
       <category term="java" scheme="https://swinepig.github.io/tags/java/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>某证信接口报文处理设计</title>
+    <link href="https://swinepig.github.io/2014/06/13/zxapidoc/"/>
+    <id>https://swinepig.github.io/2014/06/13/zxapidoc/</id>
+    <published>2014-06-13T03:21:54.000Z</published>
+    <updated>2017-02-16T04:19:39.630Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="设计目的"><a href="#设计目的" class="headerlink" title="设计目的"></a>设计目的</h2><p>由于征信中心数据传输均采用txt报文，需要采用一种较为灵活的方式对报文的解析及生成进行控制。</p>
+<h2 id="设计思路"><a href="#设计思路" class="headerlink" title="设计思路"></a>设计思路</h2><p>为了能够灵活的将txt报文和系统业务实体匹配，需要有一个配置文件对报文的结构和实体映射关系进行维护管理。</p>
+<p>应用程序根据配置文件定义的结构使用反射技术将实体和txt报文之间互相转换。</p>
+<h2 id="详细设计"><a href="#详细设计" class="headerlink" title="详细设计"></a>详细设计</h2><h3 id="配置文件设计"><a href="#配置文件设计" class="headerlink" title="配置文件设计"></a>配置文件设计</h3><p>配置文件样例：</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">ZxMsgFormats</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">ZxFormat</span> <span class="attr">name</span>=<span class="string">"NameNormalMessage"</span> <span class="attr">id</span>=<span class="string">"com.hengtian.zxjk.entity.message.NameNormalMessage"</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">ZxNode</span> <span class="attr">propertyName</span>=<span class="string">"FinancialOrganizationCode"</span> <span class="attr">length</span>=<span class="string">"14"</span> <span class="attr">type</span>=<span class="string">"AN"</span> <span class="attr">state</span>=<span class="string">"M"</span>/&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">ZxNode</span> <span class="attr">propertyName</span>=<span class="string">"MessageRiseTime"</span> <span class="attr">length</span>=<span class="string">"6"</span> <span class="attr">type</span>=<span class="string">"AN"</span> <span class="attr">state</span>=<span class="string">"M"</span>/&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">ZxNode</span> <span class="attr">propertyName</span>=<span class="string">"FlowNum1"</span> <span class="attr">length</span>=<span class="string">"3"</span> <span class="attr">type</span>=<span class="string">"AN"</span> <span class="attr">state</span>=<span class="string">"M"</span>/&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">ZxNode</span> <span class="attr">propertyName</span>=<span class="string">"ReportType"</span> <span class="attr">length</span>=<span class="string">"1"</span> <span class="attr">type</span>=<span class="string">"AN"</span> <span class="attr">state</span>=<span class="string">"M"</span>/&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">ZxNode</span> <span class="attr">propertyName</span>=<span class="string">"FlowNum2"</span> <span class="attr">length</span>=<span class="string">"3"</span> <span class="attr">type</span>=<span class="string">"AN"</span> <span class="attr">state</span>=<span class="string">"M"</span>/&gt;</span></div><div class="line">  <span class="tag">&lt;/<span class="name">ZxFormat</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">ZxMsgFormats</span>&gt;</span></div></pre></td></tr></table></figure>
+<h4 id="Element介绍"><a href="#Element介绍" class="headerlink" title="Element介绍"></a>Element介绍</h4><ul>
+<li><p>ZxFormat：每种业务报文对应的配置信息</p>
+</li>
+<li><p>ZxNode：具体业务字段</p>
+</li>
+</ul>
+<h4 id="Attribute介绍"><a href="#Attribute介绍" class="headerlink" title="Attribute介绍"></a>Attribute介绍</h4><ul>
+<li><p>id：报文对应的业务实体类型名</p>
+</li>
+<li><p>propertyName：报文中对应的业务实体属性字段名称</p>
+</li>
+<li><p>length: 报文中属性的长度</p>
+</li>
+<li><p>type：报文中属性的数据类型</p>
+</li>
+<li><p>state：报文中属性的状态，M表示必选，O表示可选</p>
+</li>
+</ul>
+<h3 id="业务实体设计"><a href="#业务实体设计" class="headerlink" title="业务实体设计"></a>业务实体设计</h3><p>为了处理简便快速，报文业务实体采用平面型的设计方式。</p>
+<p>业务实体中的字段类型均为String，报文中定义的各种字段类型在业务实体后进行处理。</p>
+<p>对应上节中的样例，业务实体定义如下：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">NameNormalMessage</span> </span>&#123;</div><div class="line">	<span class="comment">/**</span></div><div class="line">	 * 金融机构代码(第1～14位)</div><div class="line">	 */</div><div class="line">	<span class="keyword">private</span> String financialOrganizationCode;</div><div class="line">	<span class="comment">/**</span></div><div class="line">	 * 第15～20位：表示数据发生年月；</div><div class="line">	 */</div><div class="line">	<span class="keyword">private</span> String messageRiseTime;</div><div class="line">	<span class="comment">/**</span></div><div class="line">	 * 第21～23位：表示报文流水序号，由0-9的数字和大写字母A-Z组成</div><div class="line">	 */</div><div class="line">	<span class="keyword">private</span> String flowNum1;</div><div class="line">	<span class="comment">/**</span></div><div class="line">	 * 报文类别(第24位)</div><div class="line">	 */</div><div class="line">	<span class="keyword">private</span> String reportType;</div><div class="line">	<span class="comment">/**</span></div><div class="line">	 * 流水号(第25～27位),表示报文流水序号,由0-9的数字和大写字母A-Z组成</div><div class="line">	 */</div><div class="line">	<span class="keyword">private</span> String flowNum2;</div><div class="line">	</div><div class="line">	<span class="function"><span class="keyword">public</span> String <span class="title">getFinancialOrganizationCode</span><span class="params">()</span> </span>&#123;</div><div class="line">		<span class="keyword">return</span> financialOrganizationCode;</div><div class="line">	&#125;</div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setFinancialOrganizationCode</span><span class="params">(String financialOrganizationCode)</span> </span>&#123;</div><div class="line">		<span class="keyword">this</span>.financialOrganizationCode = financialOrganizationCode;</div><div class="line">	&#125;</div><div class="line">	<span class="function"><span class="keyword">public</span> String <span class="title">getMessageRiseTime</span><span class="params">()</span> </span>&#123;</div><div class="line">		<span class="keyword">return</span> messageRiseTime;</div><div class="line">	&#125;</div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setMessageRiseTime</span><span class="params">(String messageRiseTime)</span> </span>&#123;</div><div class="line">		<span class="keyword">this</span>.messageRiseTime = messageRiseTime;</div><div class="line">	&#125;</div><div class="line">	<span class="function"><span class="keyword">public</span> String <span class="title">getFlowNum1</span><span class="params">()</span> </span>&#123;</div><div class="line">		<span class="keyword">return</span> flowNum1;</div><div class="line">	&#125;</div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setFlowNum1</span><span class="params">(String flowNum1)</span> </span>&#123;</div><div class="line">		<span class="keyword">this</span>.flowNum1 = flowNum1;</div><div class="line">	&#125;</div><div class="line">	<span class="function"><span class="keyword">public</span> String <span class="title">getReportType</span><span class="params">()</span> </span>&#123;</div><div class="line">		<span class="keyword">return</span> reportType;</div><div class="line">	&#125;</div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setReportType</span><span class="params">(String reportType)</span> </span>&#123;</div><div class="line">		<span class="keyword">this</span>.reportType = reportType;</div><div class="line">	&#125;</div><div class="line">	<span class="function"><span class="keyword">public</span> String <span class="title">getFlowNum2</span><span class="params">()</span> </span>&#123;</div><div class="line">		<span class="keyword">return</span> flowNum2;</div><div class="line">	&#125;</div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setFlowNum2</span><span class="params">(String flowNum2)</span> </span>&#123;</div><div class="line">		<span class="keyword">this</span>.flowNum2 = flowNum2;</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="编码解码设计"><a href="#编码解码设计" class="headerlink" title="编码解码设计"></a>编码解码设计</h3><p>报文的编解码的产物分别为txt报文和系统业务实体。</p>
+<p>编解码都是通过读取配置，使用反射技术来完成的。</p>
+<h4 id="编码"><a href="#编码" class="headerlink" title="编码"></a>编码</h4><p> <img src="http://od0qigwk9.bkt.clouddn.com/1487214815.jpg" alt="编码"></p>
+<h4 id="解码"><a href="#解码" class="headerlink" title="解码"></a>解码</h4><p> <img src="http://od0qigwk9.bkt.clouddn.com/1487214777.jpg" alt="解码"></p>
+<h3 id="异常处理设计"><a href="#异常处理设计" class="headerlink" title="异常处理设计"></a>异常处理设计</h3><p>异常处理的目的是帮助开发人员定位报文编解码中的具体错误。</p>
+<p>自定义异常异常：</p>
+<p>待定</p>
+<p>具体实现代码可见<a href="https://github.com/swinepig/JAVA" target="_blank" rel="external">GitHub</a></p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;设计目的&quot;&gt;&lt;a href=&quot;#设计目的&quot; class=&quot;headerlink&quot; title=&quot;设计目的&quot;&gt;&lt;/a&gt;设计目的&lt;/h2&gt;&lt;p&gt;由于征信中心数据传输均采用txt报文，需要采用一种较为灵活的方式对报文的解析及生成进行控制。&lt;/p&gt;
+&lt;h2 id=&quot;设计思
+    
+    </summary>
+    
+      <category term="java" scheme="https://swinepig.github.io/categories/java/"/>
+    
     
   </entry>
   
