@@ -55,15 +55,16 @@
     <link href="https://swinepig.github.io/2017/01/22/born/"/>
     <id>https://swinepig.github.io/2017/01/22/born/</id>
     <published>2017-01-22T08:17:23.000Z</published>
-    <updated>2017-02-17T00:32:44.791Z</updated>
+    <updated>2017-02-23T02:08:11.832Z</updated>
     
-    <content type="html"><![CDATA[<p>2016年12月22日晚上吃完饭 ： 宝妈肚子开始有规律的疼起来<br>2016年12月22日20点多 ： 开始收拾东西目的地浙江省妇保急诊室<br>2016年12月22日21点左右 ： 急诊后医生告知开半指，要开一指半才能去待产室等两小时再去观察，这时宝妈疼的已经受不了了<br>2016年12月22日22点半 ： 宝妈疼的死去活来要求提前检查<br><a id="more"></a><br>2016年12月22日23点不到 ： 检查已开两指，宝妈一个人被推入待产室<br>半夜 ： 奶爸焦急等待，心里既高兴又忐忑，希望母子平安<br>2016年12月23日凌晨5点左右 ： 导乐告知宝宝头已经露出来了，奶爸想既然头露出来了应该快了<br>2016年12月23日凌晨5点半 ： 没有消息继续等，期间陆陆续续有医生喊家属名字<br>2016年12月23日凌晨5点58分 ：<br>“XXX家属在吗？”<br>“在” 奶爸立马冲了过去<br>“给你看看，生了个大胖儿子，早上5点58分生的，记住了”<br>“好好，我看看” 奶爸立马掏出手机拍了三张照，看了照片奶爸想嘴巴真是大好难看呀!</p>
-<p><img src="https://cldup.com/dTxpPi9lDf.thumb.png" alt="N|Solid"></p>
+    <content type="html"><![CDATA[<p>![]<a href="https://cldup.com/dTxpPi9lDf.thumb.png" target="_blank" rel="external">https://cldup.com/dTxpPi9lDf.thumb.png</a>)</p>
+<p>2016年12月22日晚上吃完饭 ： 宝妈肚子开始有规律的疼起来<br>2016年12月22日20点多 ： 开始收拾东西目的地浙江省妇保急诊室<br>2016年12月22日21点左右 ： 急诊后医生告知开半指，要开一指半才能去待产室等两小时再去观察，这时宝妈疼的已经受不了了<br>2016年12月22日22点半 ： 宝妈疼的死去活来要求提前检查<br><a id="more"></a><br>2016年12月22日23点不到 ： 检查已开两指，宝妈一个人被推入待产室<br>半夜 ： 奶爸焦急等待，心里既高兴又忐忑，希望母子平安<br>2016年12月23日凌晨5点左右 ： 导乐告知宝宝头已经露出来了，奶爸想既然头露出来了应该快了<br>2016年12月23日凌晨5点半 ： 没有消息继续等，期间陆陆续续有医生喊家属名字<br>2016年12月23日凌晨5点58分 ：<br>“XXX家属在吗？”<br>“在” 奶爸立马冲了过去<br>“给你看看，生了个大胖儿子，早上5点58分生的，记住了”<br>“好好，我看看” 奶爸立马掏出手机拍了三张照，看了照片奶爸想嘴巴真是大好难看呀!</p>
 ]]></content>
     
     <summary type="html">
     
-      &lt;p&gt;2016年12月22日晚上吃完饭 ： 宝妈肚子开始有规律的疼起来&lt;br&gt;2016年12月22日20点多 ： 开始收拾东西目的地浙江省妇保急诊室&lt;br&gt;2016年12月22日21点左右 ： 急诊后医生告知开半指，要开一指半才能去待产室等两小时再去观察，这时宝妈疼的已经受不了了&lt;br&gt;2016年12月22日22点半 ： 宝妈疼的死去活来要求提前检查&lt;br&gt;
+      &lt;p&gt;![]&lt;a href=&quot;https://cldup.com/dTxpPi9lDf.thumb.png&quot;&gt;https://cldup.com/dTxpPi9lDf.thumb.png&lt;/a&gt;)&lt;/p&gt;
+&lt;p&gt;2016年12月22日晚上吃完饭 ： 宝妈肚子开始有规律的疼起来&lt;br&gt;2016年12月22日20点多 ： 开始收拾东西目的地浙江省妇保急诊室&lt;br&gt;2016年12月22日21点左右 ： 急诊后医生告知开半指，要开一指半才能去待产室等两小时再去观察，这时宝妈疼的已经受不了了&lt;br&gt;2016年12月22日22点半 ： 宝妈疼的死去活来要求提前检查&lt;br&gt;
     
     </summary>
     
@@ -289,6 +290,82 @@
     
       <category term="java" scheme="https://swinepig.github.io/categories/java/"/>
     
+    
+  </entry>
+  
+  <entry>
+    <title>Android开发环境安装&amp;IntelliJ IDEA初步使用</title>
+    <link href="https://swinepig.github.io/2016/07/23/android-idea/"/>
+    <id>https://swinepig.github.io/2016/07/23/android-idea/</id>
+    <published>2016-07-23T01:47:48.000Z</published>
+    <updated>2017-02-23T02:07:00.352Z</updated>
+    
+    <content type="html"><![CDATA[<p>几年前使用EclipseADT插件玩过一段时间的Android,后因工作的原因暂时停止了对Android的关注。最近思索移动端和服务端消息的安全传递，奈何没有相关开发环境，又听说IntelliJ IDEA非常火，于是乎冒出一个念头：何不使用IDEA开发下Android试试？本文记录Windows下Android开发环境安装和IntelliJ IDEA初步使用，以供日后参考。</p>
+<p>安装Android开发环境分下面几个步骤</p>
+<h2 id="第一步：安装JDK"><a href="#第一步：安装JDK" class="headerlink" title="第一步：安装JDK"></a>第一步：安装JDK</h2><p>作为一个JAVA Coder对于JDK的下载，安装应该都是熟能生巧了在这就不过多的啰嗦了=。=</p>
+<h2 id="第二步：下载安装Android-SDK"><a href="#第二步：下载安装Android-SDK" class="headerlink" title="第二步：下载安装Android SDK"></a>第二步：下载安装Android SDK</h2><p>安装好JDK后，因为要开发Android程序还需另行下载Android SDK（Software Development Kit）</p>
+<p>Android SDK下载网址：<a href="http://developer.android.com/sdk/index.html" target="_blank" rel="external">http://developer.android.com/sdk/index.html</a></p>
+<p><img src="http://od0qigwk9.bkt.clouddn.com/androidandroidSDK1.png" alt=""></p>
+<p>为了方便使用Android SDK包含的开发工具，我们在系统环境变量中的Path设置Android SDK的安装目录下的tools目录，在下载解压目录双击“SDK Manager.exe”，打开Android SDK Manager，Android SDK Manage负责下载或更新不同版本的SDK包</p>
+<p><img src="http://od0qigwk9.bkt.clouddn.com/androidandroid1.png" alt=""></p>
+<h2 id="第三步：下载安装IntelliJ-IDEA"><a href="#第三步：下载安装IntelliJ-IDEA" class="headerlink" title="第三步：下载安装IntelliJ IDEA"></a>第三步：下载安装IntelliJ IDEA</h2><p>在这步使用IDEA代替Eclipse(开发Android需要ADT插件支持)，IDEA对Android开发的支持是内置的，不再需要其他插件。</p>
+<p>IDEA下载网址：<a href="http://www.jetbrains.com/idea/" target="_blank" rel="external">http://www.jetbrains.com/idea/</a> 如果只想进行Android开发可以选择社区版，如果要进行JAVAEE的开发则选择下载旗舰版(破解的确超级麻烦)</p>
+<p>社区版和旗舰版区别</p>
+<p><img src="http://od0qigwk9.bkt.clouddn.com/androidIDEA1.png" alt=""></p>
+<p><img src="http://od0qigwk9.bkt.clouddn.com/androidIDEA2.png" alt=""></p>
+<p>安装后我们点击Create New Project，创建一个新的工程：</p>
+<p><img src="http://od0qigwk9.bkt.clouddn.com/androidIDEA3.png" alt=""></p>
+<blockquote>
+<p>IntelliJ IDEA中的Project，并不是真正的project，相当于Eclipse中的Workspace</p>
+<p>在创建Android项目之前需要在IDEA中配置好JDK和SDK</p>
+</blockquote>
+<p>比较下两者之间的概念差异</p>
+<table>
+<thead>
+<tr>
+<th>Attribute</th>
+<th>eclipse</th>
+<th>IEDA/Android Studio</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>工作区</td>
+<td>workspace</td>
+<td>project</td>
+</tr>
+<tr>
+<td>项目</td>
+<td>project</td>
+<td>module</td>
+</tr>
+<tr>
+<td>引用</td>
+<td>preference</td>
+<td>module dependency</td>
+</tr>
+</tbody>
+</table>
+<p>弹出对话框</p>
+<p><img src="http://od0qigwk9.bkt.clouddn.com/androidIDEA4.png" alt=""></p>
+<p>在上图中选择Android选项Configure your new project,点击下一步：</p>
+<p><img src="http://od0qigwk9.bkt.clouddn.com/androidIDEA5.png" alt=""></p>
+<p>这跟我们在Eclipse的插件ADT中开发是类似的。接着选择下一步：</p>
+<p><img src="http://od0qigwk9.bkt.clouddn.com/androidIDEA6.png" alt=""></p>
+<p>在这一步可以选择不同的布局，选择下一步：如果没之前没下载Gradle，这时IEDA会下载Gradle并build刚才的Android项目</p>
+<p><img src="http://od0qigwk9.bkt.clouddn.com/androidIDEA7.png" alt=""></p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;几年前使用EclipseADT插件玩过一段时间的Android,后因工作的原因暂时停止了对Android的关注。最近思索移动端和服务端消息的安全传递，奈何没有相关开发环境，又听说IntelliJ IDEA非常火，于是乎冒出一个念头：何不使用IDEA开发下Android试试？
+    
+    </summary>
+    
+      <category term="java" scheme="https://swinepig.github.io/categories/java/"/>
+    
+    
+      <category term="android" scheme="https://swinepig.github.io/tags/android/"/>
     
   </entry>
   
