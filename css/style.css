@@ -235,7 +235,7 @@ div {
     .post .post-content pre code {
       padding: 0 2em; }
     .post .post-content p {
-      margin: 0 0 1.234em; }
+      margin: 0.5em 0 0.5em 0.6em; }
       .post .post-content p code {
         display: inline-block;
         margin: 0 5px;

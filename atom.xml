@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://swinepig.github.io/"/>
-  <updated>2017-02-24T02:08:32.610Z</updated>
+  <updated>2017-02-24T02:28:50.225Z</updated>
   <id>https://swinepig.github.io/</id>
   
   <author>
@@ -20,9 +20,9 @@
     <link href="https://swinepig.github.io/2017/02/24/hexo-node-error/"/>
     <id>https://swinepig.github.io/2017/02/24/hexo-node-error/</id>
     <published>2017-02-24T01:41:23.000Z</published>
-    <updated>2017-02-24T02:08:32.610Z</updated>
+    <updated>2017-02-24T02:28:50.225Z</updated>
     
-    <content type="html"><![CDATA[<p>事情是这样的：本想给博客加个相册功能按照网友的方法(传送门 <a href="http://www.cnblogs.com/xljzlw/p/5137622.html)一步步的下来也相安无事，没想到一大堆坑等着我去踩！" target="_blank" rel="external">http://www.cnblogs.com/xljzlw/p/5137622.html)一步步的下来也相安无事，没想到一大堆坑等着我去踩！</a></p>
+    <content type="html"><![CDATA[<p>事情是这样的：本想给博客加个相册功能按照网友的方法(传送门 <a href="http://www.cnblogs.com/xljzlw/p/5137622.html" target="_blank" rel="external">http://www.cnblogs.com/xljzlw/p/5137622.html</a> )一步步的下来也相安无事，没想到一大堆坑等着我去踩！</p>
 <p>在创建完<code>tool.js</code></p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div></pre></td><td class="code"><pre><div class="line"><span class="meta">"use strict"</span>;</div><div class="line">    <span class="keyword">const</span> fs = <span class="built_in">require</span>(<span class="string">"fs"</span>);</div><div class="line">    <span class="keyword">const</span> path = <span class="string">"../../photos"</span>;</div><div class="line"></div><div class="line">    fs.readdir(path, <span class="function"><span class="keyword">function</span> (<span class="params">err, files</span>) </span>&#123;</div><div class="line">        <span class="keyword">if</span> (err) &#123;</div><div class="line">            <span class="keyword">return</span>;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">let</span> arr = [];</div><div class="line">        (<span class="function"><span class="keyword">function</span> <span class="title">iterator</span>(<span class="params">index</span>) </span>&#123;</div><div class="line">            <span class="keyword">if</span> (index == files.length) &#123;</div><div class="line">                fs.writeFile(<span class="string">"output.json"</span>, <span class="built_in">JSON</span>.stringify(arr, <span class="literal">null</span>, <span class="string">"\t"</span>));</div><div class="line">                <span class="keyword">return</span>;</div><div class="line">            &#125;</div><div class="line"></div><div class="line">            fs.stat(path + <span class="string">"/"</span> + files[index], <span class="function"><span class="keyword">function</span> (<span class="params">err, stats</span>) </span>&#123;</div><div class="line">                <span class="keyword">if</span> (err) &#123;</div><div class="line">                    <span class="keyword">return</span>;</div><div class="line">                &#125;</div><div class="line">                <span class="keyword">if</span> (stats.isFile()) &#123;</div><div class="line">                    arr.push(files[index]);</div><div class="line">                &#125;</div><div class="line">                iterator(index + <span class="number">1</span>);</div><div class="line">            &#125;)</div><div class="line">        &#125;(<span class="number">0</span>));</div><div class="line">    &#125;);</div></pre></td></tr></table></figure>
 <p>在运行<code>node tool.js</code>时遇到了</p>
@@ -49,7 +49,7 @@
     
     <summary type="html">
     
-      &lt;p&gt;事情是这样的：本想给博客加个相册功能按照网友的方法(传送门 &lt;a href=&quot;http://www.cnblogs.com/xljzlw/p/5137622.html)一步步的下来也相安无事，没想到一大堆坑等着我去踩！&quot; target=&quot;_blank&quot; rel=&quot;exter
+      &lt;p&gt;事情是这样的：本想给博客加个相册功能按照网友的方法(传送门 &lt;a href=&quot;http://www.cnblogs.com/xljzlw/p/5137622.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://www.cnblogs.co
     
     </summary>
     
