@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://swinepig.github.io/"/>
-  <updated>2017-02-28T01:32:01.253Z</updated>
+  <updated>2017-03-09T09:10:45.607Z</updated>
   <id>https://swinepig.github.io/</id>
   
   <author>
@@ -14,6 +14,57 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Class.forName小记</title>
+    <link href="https://swinepig.github.io/2017/03/09/classforname/"/>
+    <id>https://swinepig.github.io/2017/03/09/classforname/</id>
+    <published>2017-03-09T08:53:05.000Z</published>
+    <updated>2017-03-09T09:10:45.607Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="问题所在"><a href="#问题所在" class="headerlink" title="问题所在"></a>问题所在</h3><p>JDK中对Class.forName记载是这样的</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="keyword">static</span> Class&lt;?&gt; forName(String className)</div><div class="line">                        <span class="keyword">throws</span> ClassNotFoundException</div></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="keyword">static</span> Class&lt;?&gt; forName(String name,</div><div class="line">                               <span class="keyword">boolean</span> initialize,</div><div class="line">                               ClassLoader loader)</div><div class="line">                        <span class="keyword">throws</span> ClassNotFoundException</div></pre></td></tr></table></figure>
+<p>前一个等同于<code>initialize=true</code></p>
+<p>我们知道<code>initialize=true</code>时表示类加载过程中必须初始化(执行静态代码块等)，反之不进行初始化</p>
+<p>类T</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">T</span> </span>&#123;</div><div class="line"></div><div class="line">	<span class="keyword">static</span> &#123;</div><div class="line">		System.out.println(<span class="number">1</span>);</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> <span class="keyword">throws</span> Exception </span>&#123;</div><div class="line">		Class.forName(<span class="string">"com.zx.jvm.T"</span>, <span class="keyword">false</span>, Thread.currentThread()</div><div class="line">				.getContextClassLoader());</div><div class="line"></div><div class="line">	&#125;</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>期望不输出<code>1</code>,但结果却是反复输出<code>1</code>，不管改成<code>true</code>还是<code>false</code>,或者直接调用<code>loadClass()</code>。对此还怀疑是不是JDK的原因，又一想sun公司应该不会出错肯定是哪里出现了错误！</p>
+<h3 id="找到原因"><a href="#找到原因" class="headerlink" title="找到原因"></a>找到原因</h3><p>经过排查发现问题所在–<code>main函数</code></p>
+<p>main()方法是java应用程序的入口方法。JVM通过main方法找到需要启动的运行程序，并且检查<code>main函数所在类</code>是否被JVM装载过。如果没有装载过，那么这个类就需要被装载进行初始化，并且装载所有相关的其他类。因此程序在运行的时候，第一个执行的方法就是main()方法。</p>
+<p>为了验证这个说法T类中去掉<code>Class.forName(&quot;com.zx.jvm.T&quot;, false, Thread.currentThread().getContextClassLoader())</code>这句然后直接执行T类出现<code>1</code></p>
+<p>同样的创建新类F，在F中执行<code>Class.forName(&quot;com.zx.jvm.T&quot;, false, Thread.currentThread().getContextClassLoader())</code>果然不进行初始化了</p>
+<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><h4 id="forName-String-className-单参数时-initialize-true"><a href="#forName-String-className-单参数时-initialize-true" class="headerlink" title="forName(String className)单参数时, initialize=true"></a>forName(String className)单参数时, initialize=true</h4><blockquote>
+<p>总是使用当前类装载器(也就是装载执行forName()请求的类的类装载器)</p>
+<p>总是初始化这个被装载的类(当然也包括：装载、连接、初始化)</p>
+</blockquote>
+<h4 id="forName-String-className-boolean-initialize-ClassLoader-loader"><a href="#forName-String-className-boolean-initialize-ClassLoader-loader" class="headerlink" title="forName(String className, boolean initialize, ClassLoader loader)"></a>forName(String className, boolean initialize, ClassLoader loader)</h4><blockquote>
+<p>loader指定装载参数类所用的类装载器，如果null则用bootstrp装载器。</p>
+<p>initialize=true时，肯定连接，而且初始化了；</p>
+<p>initialize=false时，绝对不会初始化，但是可能被连接了</p>
+</blockquote>
+<h4 id="loadClass-String-name-单参数时-resolve-false"><a href="#loadClass-String-name-单参数时-resolve-false" class="headerlink" title="loadClass(String name)单参数时, resolve=false"></a>loadClass(String name)单参数时, resolve=false</h4><blockquote>
+<p>如果该类已经被该类装载器所装载，那么，返回这个已经被装载的类型的Class的实例，否则，就用这个自定义的类装载器来装载这个class，这时不知道是否被连接。绝对不会被初始化</p>
+<p>这时唯一可以保证的是，这个类被装载了。但是不知道这个类是不是被连接和初始化了</p>
+</blockquote>
+<h4 id="loadClass-String-name-boolean-resolve"><a href="#loadClass-String-name-boolean-resolve" class="headerlink" title="loadClass(String name, boolean resolve)"></a>loadClass(String name, boolean resolve)</h4><blockquote>
+<p>resolve=true时，则保证已经装载，而且已经连接了。 resolve=falses时，则仅仅是去装载这个类，不关心是否连接了，所以此时可能被连接了，也可能没有被连接</p>
+</blockquote>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h3 id=&quot;问题所在&quot;&gt;&lt;a href=&quot;#问题所在&quot; class=&quot;headerlink&quot; title=&quot;问题所在&quot;&gt;&lt;/a&gt;问题所在&lt;/h3&gt;&lt;p&gt;JDK中对Class.forName记载是这样的&lt;/p&gt;
+&lt;figure class=&quot;highlight java&quot;&gt;&lt;t
+    
+    </summary>
+    
+      <category term="java" scheme="https://swinepig.github.io/categories/java/"/>
+    
+    
+      <category term="jvm" scheme="https://swinepig.github.io/tags/jvm/"/>
+    
+  </entry>
   
   <entry>
     <title>LinkedList数据结构小觑</title>
