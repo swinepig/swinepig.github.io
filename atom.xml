@@ -719,16 +719,16 @@
     <link href="https://swinepig.github.io/2016/03/30/redis-tt/"/>
     <id>https://swinepig.github.io/2016/03/30/redis-tt/</id>
     <published>2016-03-30T02:03:01.000Z</published>
-    <updated>2017-03-30T02:28:12.810Z</updated>
+    <updated>2017-03-30T02:33:11.951Z</updated>
     
     <content type="html"><![CDATA[<p>之前公司搞一个证券量化交易系统因交易数据非常庞大又对响应要求非常高，平常的基于磁盘的关系型数据库完全负担不了，于是就有了今天<br>的内容,至于技术选型则看  <a href="https://wenku.baidu.com/view/5f93d062ccbff121dd36837e" target="_blank" rel="external">https://wenku.baidu.com/view/5f93d062ccbff121dd36837e</a></p>
-<p>‘redis和TT(TimesTen)的比较这篇文章也是很早之前完成的，现在看来因当时自己知识的局限性也导致了这篇文章的局限性。’</p>
+<p><code>redis和TT(TimesTen)的比较这篇文章也是很早之前完成的，现在看来因当时自己知识的局限性也导致了这篇文章的局限性。</code></p>
 <p>基于几个原因项目组当时最先采用的是TT</p>
 <ul>
 <li>量化交易数据比较复杂，查询语句也比较复杂，redis不支持复杂的关系查询</li>
 <li>因为都是基于内存的数据库，可靠性+便利性也是当时的一种考量,内存数据库最终需要落地项目组使用的是oracle数据库，如果采用redis如何<br>同oracle同步是个问题或者舍弃oracle改用mysql增加redis-mysql之间的同步,但13年的时候还没有这种工具出现。TT和oracle是同爹妈生的恰好<br>TT本就有一套和oracle同步的机制所以采用了TT。</li>
 </ul>
-<p>一个两者比较的传送门 <a href="https://wenku.baidu.com/view/f1585c01c281e53a5802ff23" target="_blank" rel="external">https://wenku.baidu.com/view/f1585c01c281e53a5802ff23</a></p>
+<p>两者比较的传送门 <a href="https://wenku.baidu.com/view/f1585c01c281e53a5802ff23" target="_blank" rel="external">https://wenku.baidu.com/view/f1585c01c281e53a5802ff23</a></p>
 <p><img src="http://od0qigwk9.bkt.clouddn.com/csm.jpg" alt=""></p>
 ]]></content>
     
