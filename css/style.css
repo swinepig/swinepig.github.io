@@ -1660,3 +1660,14 @@ em.search-keyword {
     opacity: 0; } }
 
 /* 导航效果结束 */
+::selection {
+  background: black;
+  color: white; }
+
+::-moz-selection {
+  background: black;
+  color: white; }
+
+::-webkit-selection {
+  background: black;
+  color: white; }
